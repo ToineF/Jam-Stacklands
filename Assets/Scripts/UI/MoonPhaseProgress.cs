@@ -10,13 +10,35 @@ public class MoonPhaseProgress : MonoBehaviour
     [Tooltip("Time in seconds")]
     private float timePerPhase;
 
+    [SerializeField]
+    private Image playPauseImage;
+    [SerializeField]
+    private Sprite playSprite;
+    [SerializeField]
+    private Sprite pauseSprite;
+    [SerializeField]
+    private Sprite fastSprite;
+
     private bool _isMoonPhaseOver;
 
     public Action MoonPhaseOverEvent;
 
     void Start()
     {
+        GameManager.Instance.OnPauseStateChanged += OnPause;
         Restart();
+    }
+
+    private void OnPause(bool isPaused)
+    {
+        if (!isPaused && GameManager.Instance.IsFastForwarding)
+        {
+            playPauseImage.sprite = fastSprite;
+        }
+        else
+        {
+            playPauseImage.sprite = isPaused ? pauseSprite : playSprite;
+        }
     }
 
     void Update()
@@ -44,5 +66,23 @@ public class MoonPhaseProgress : MonoBehaviour
     void Restart()
     {
         moonPhaseImage.fillAmount = 0.0f;
+    }
+
+    public void CycleThroughSpeeds()
+    {
+        if (GameManager.Instance.IsPaused)
+        {
+            GameManager.Instance.IsPaused = false;
+        }
+        else if (!GameManager.Instance.IsFastForwarding)
+        {
+            GameManager.Instance.IsFastForwarding = true;
+            playPauseImage.sprite = fastSprite;
+        }
+        else
+        {
+            GameManager.Instance.IsFastForwarding = false;
+            GameManager.Instance.IsPaused = true;
+        }
     }
 }
