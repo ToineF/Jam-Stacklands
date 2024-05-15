@@ -5,6 +5,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [field:Header("References")]
+    [field: SerializeField] public DragNDropVisualData VisualData { get; private set; }
+    [field: SerializeField] public Transform MinDragNDropZone { get; private set; }
+    [field: SerializeField] public Transform MaxDragNDropZone { get; private set; }
+
+    [Header("Params")]
     [SerializeField]
     private float fastForwardTimeScale;
     

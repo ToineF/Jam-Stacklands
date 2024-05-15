@@ -13,9 +13,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform RootTransform { get; set; }
     public bool IsActivable { get; set; } = true;
 
-    [SerializeField] private Vector3 _parentCardOffset;
-    [SerializeField, Range(0, 1)] private float _cardFollowLerp;
-
     private Image _image;
     private Vector3 _mouseOffset;
 
@@ -126,7 +123,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void Update()
     {
-        if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + _parentCardOffset, _cardFollowLerp);
+        if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + GameManager.Instance?.VisualData.ParentOffset ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
     }
 
 }
