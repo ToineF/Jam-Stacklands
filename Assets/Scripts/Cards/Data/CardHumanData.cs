@@ -5,5 +5,4 @@ public class CardHumanData : CardCharacterData
 {
     [field: Header("Human Params")]
     [field:SerializeField] public int ResourcesStolen { get; private set; }
-
 }

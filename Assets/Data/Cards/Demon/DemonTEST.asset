@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1817ac6085565b24f813beb2a08da7ac, type: 3}
   m_Name: DemonTEST
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Image>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: DEMON
+  <Sprite>k__BackingField: {fileID: 0}
   <OfferingAmount>k__BackingField: 0
   <Life>k__BackingField: 0
+  <DamageGiven>k__BackingField: 0
+  <CraftSpeed>k__BackingField: 0

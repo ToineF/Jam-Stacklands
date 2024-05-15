@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b3624f9a0480d4199d21d40b01d410, type: 3}
   m_Name: ResourceTEST
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Image>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: RESOURCE
+  <Sprite>k__BackingField: {fileID: 0}
   <OfferingAmount>k__BackingField: 0
   <Life>k__BackingField: 0
+  <DamageGiven>k__BackingField: 0
+  <CardToSpawnOnCraft>k__BackingField: {fileID: 0}
+  <IsDestroyedAfterCraft>k__BackingField: 1

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,6 +6,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
+    [field:SerializeField] public Card Card { get; private set; }
     public DraggableCard ChildDraggable { get; private set; }
     public DraggableCard ParentDraggable { get; private set; }
     public Transform ParentTransform { get; set; }
@@ -15,7 +15,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private Image _image;
     private Vector3 _mouseOffset;
-    private Vector3 _previousPosition;
 
     private void Awake()
     {
@@ -32,7 +31,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         ParentTransform = transform.parent;
         _image.raycastTarget = false;
         _mouseOffset = transform.position - Input.mousePosition;
-        _previousPosition = transform.position;
         transform.DOKill();
 
         ShowBeforeEverything();
@@ -59,13 +57,14 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         _image.raycastTarget = true;
 
-        if (OutOfBounds()) transform.DOMove(_previousPosition, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
+        if (OutOfBounds(out Vector3 position)) transform.DOMove(position, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
     }
 
-    private bool OutOfBounds()
+    private bool OutOfBounds(out Vector3 position)
     {
         Vector2 min = GameManager.Instance.MinDragNDropZone.position;
         Vector2 max = GameManager.Instance.MaxDragNDropZone.position;
+        position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x), Mathf.Clamp(transform.position.y, min.y, max.y), transform.position.z);
         return (transform.position.x < min.x || transform.position.x > max.x || transform.position.y < min.y || transform.position.y > max.y);
     }
 
@@ -121,6 +120,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             newDraggable.ParentDraggable = this;
             ChildDraggable.ParentTransform = transform;
             //ChildDraggable.transform.SetParent(transform);
+            Card.CheckInteraction(newDraggable);
         }
     }
 
@@ -128,5 +128,4 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + GameManager.Instance?.VisualData.ParentOffset ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
     }
-
 }

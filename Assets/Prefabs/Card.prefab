@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8794695955089939402}
   - component: {fileID: 4709481108559312784}
   - component: {fileID: 2774001228908938092}
+  - component: {fileID: 1331083045398244113}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -89,6 +90,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088f86fe7c0bfd84490e5757622679bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ResetDraggableTransform>k__BackingField: 0
-  _parentCardOffset: {x: 0, y: -20, z: 0}
-  _cardFollowLerp: 0.193
+  <Card>k__BackingField: {fileID: 1331083045398244113}
+--- !u!114 &1331083045398244113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151737354007600088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5650a56a37076da4eb2ffe3372ec6a07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Data>k__BackingField: {fileID: 11400000, guid: 7144a5f386eb3364f9c80ac26e191767, type: 2}
