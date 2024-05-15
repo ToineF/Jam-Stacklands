@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,14 +19,36 @@ public class MoonPhaseProgress : MonoBehaviour
     private Sprite pauseSprite;
     [SerializeField]
     private Sprite fastSprite;
+    
+    [SerializeField]
+    private TMP_Text nightsText;
+    private int _currentNightCounter;
 
-    private bool _isMoonPhaseOver;
+    [HideInInspector]
+    public bool IsMoonPhaseOver;
 
     public Action MoonPhaseOverEvent;
 
     void Start()
     {
+        _currentNightCounter = 1;
         GameManager.Instance.OnPauseStateChanged += OnPause;
+        GameManager.Instance.OnFastForward += OnFastForward;
+        
+        Restart();
+    }
+
+    private void OnFastForward(bool isFastForwarding)
+    {
+        playPauseImage.sprite = isFastForwarding ? fastSprite : playSprite;
+    }
+
+    public void NextNight()
+    {
+        IsMoonPhaseOver = false;
+        _currentNightCounter++;
+        nightsText.text = "Night " + _currentNightCounter;
+        
         Restart();
     }
 
@@ -43,12 +66,14 @@ public class MoonPhaseProgress : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.IsPaused)
+        if (IsMoonPhaseOver)
         {
             return;
         }
         
-        if (_isMoonPhaseOver)
+        HandleInputs();
+        
+        if (GameManager.Instance.IsPaused)
         {
             return;
         }
@@ -59,8 +84,28 @@ public class MoonPhaseProgress : MonoBehaviour
             return;
         }
         
-        _isMoonPhaseOver = true;
+        IsMoonPhaseOver = true;
         MoonPhaseOverEvent?.Invoke();
+    }
+
+    private void HandleInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.IsPaused = !GameManager.Instance.IsPaused;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (GameManager.Instance.IsPaused)
+            {
+                GameManager.Instance.IsPaused = false;
+            }
+            else
+            {
+                GameManager.Instance.IsFastForwarding = !GameManager.Instance.IsFastForwarding;
+            }
+        }
     }
 
     void Restart()
@@ -74,12 +119,10 @@ public class MoonPhaseProgress : MonoBehaviour
         {
             GameManager.Instance.IsPaused = false;
             GameManager.Instance.IsFastForwarding = false;
-            playPauseImage.sprite = playSprite;
         }
         else if (!GameManager.Instance.IsFastForwarding)
         {
             GameManager.Instance.IsFastForwarding = true;
-            playPauseImage.sprite = fastSprite;
         }
         else
         {

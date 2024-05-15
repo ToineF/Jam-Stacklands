@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = value ? fastForwardTimeScale : 1.0f;
             _isFastForwarding = value;
+            OnFastForward.Invoke(value);
         }
     }
 
@@ -37,17 +38,10 @@ public class GameManager : MonoBehaviour
     }
 
     public Action<bool> OnPauseStateChanged;
+    public Action<bool> OnFastForward;
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            IsPaused = !IsPaused;
-        }
     }
 }
