@@ -15,6 +15,8 @@ MonoBehaviour:
   <Name>k__BackingField: RESOURCE
   <Sprite>k__BackingField: {fileID: 0}
   <OfferingAmount>k__BackingField: 0
+  <CardsThatCanBeStackedOn>k__BackingField:
+  - {fileID: 11400000}
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0
   <CardToSpawnOnCraft>k__BackingField: {fileID: 0}

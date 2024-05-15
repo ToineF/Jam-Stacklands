@@ -58,9 +58,15 @@ public class Card : MonoBehaviour
             {
                 // Recipe completed
                 Debug.Log("recipe completed");
+                StartRecipe(recipe);
                 break;
             }
         }
+
+    }
+
+    private void StartRecipe(Recipe recipe)
+    {
 
     }
 

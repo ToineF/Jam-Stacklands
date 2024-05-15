@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
@@ -72,7 +73,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Image.raycastTarget = true;
         if (ChildDraggable == null) return;
 
-        ChildDraggable.ShowBeforeEverything();
+        ChildDraggable.EndDragAllChildren();
     }
     private bool OutOfBounds(out Vector3 position)
     {
@@ -93,7 +94,21 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (ChildDraggable == null)
         {
+            TryDropNewDraggable(newDraggable);
+        }
+    }
+
+    private void TryDropNewDraggable(DraggableCard newDraggable)
+    {
+        if (newDraggable.Card.Data.CardsThatCanBeStackedOn.Contains(Card.Data)) // Can Be Dropped
+        {
             SetNewDraggable(newDraggable);
+        }
+        else // Cannot Be Dropped
+        {
+            Vector2 offset = transform.position - newDraggable.transform.position;
+            offset.Normalize();
+            newDraggable.transform.DOMove(transform.position + (Vector3)offset * GameManager.Instance.VisualData.CardRepelDistance, GameManager.Instance.VisualData.CardRepelTime);
         }
     }
 

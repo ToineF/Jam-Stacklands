@@ -8,4 +8,6 @@ public class DragNDropVisualData : ScriptableObject
     [field:SerializeField] public Vector2 ParentOffset { get; private set; }
     [field:SerializeField, Range(0, 1)] public float CardFollowLerp { get; private set; }
     [field:SerializeField] public float CardOutOfBoundsLerpTime { get; private set; }
+    [field:SerializeField] public float CardRepelDistance { get; private set; }
+    [field:SerializeField] public float CardRepelTime { get; private set; }
 }
