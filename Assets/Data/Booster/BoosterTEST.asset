@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af4f1d929f8ef54da59915daa18e6ea, type: 3}
+  m_Name: BoosterTEST
+  m_EditorClassIdentifier: 
+  <NumberToSpawn>k__BackingField: 5
+  <SpawnableCards>k__BackingField:
+  - <Card>k__BackingField: {fileID: 4984761664242408455, guid: ed6e1e47bf7858e40a2af9caa15ad944, type: 3}
+    <Probability>k__BackingField: 2
+  - <Card>k__BackingField: {fileID: 4270178719798497087, guid: 953dc07c608d96745873bc4077261378, type: 3}
+    <Probability>k__BackingField: 4

@@ -17,3 +17,10 @@ MonoBehaviour:
   <CardOutOfBoundsLerpTime>k__BackingField: 0.3
   <CardRepelDistance>k__BackingField: -150
   <CardRepelTime>k__BackingField: 0.4
+  <CardDraggedScaleAmount>k__BackingField: 1.1
+  <CardDraggedScaleTime>k__BackingField: 0.2
+  <CardDroppedScaleTime>k__BackingField: 0.1
+  <CardFocusShakeForce>k__BackingField: 4
+  <CardFocusShakeTime>k__BackingField: 0.2
+  <CardSpawnDistance>k__BackingField: 200
+  <CardSpawnTime>k__BackingField: 0.2
