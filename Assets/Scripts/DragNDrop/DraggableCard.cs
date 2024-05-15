@@ -5,7 +5,7 @@ using DG.Tweening;
 using System;
 
 [RequireComponent(typeof(Image))]
-public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler
 {
     [field:SerializeField] public Card Card { get; private set; }
     public DraggableCard ChildDraggable { get; private set; }
@@ -32,18 +32,19 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         ParentDraggable = null;
         ParentTransform = transform.parent;
         _mouseOffset = transform.position - Input.mousePosition;
-        transform.DOKill();
 
-        ShowBeforeEverything();
+        BeginDragAllChildren();
     }
 
-    public void ShowBeforeEverything()
+    public void BeginDragAllChildren()
     {
         transform.SetAsLastSibling();
         Image.raycastTarget = false;
+        transform.DOComplete();
+        transform.DOScale(GameManager.Instance.VisualData.CardDraggedScaleAmount, GameManager.Instance.VisualData.CardDraggedScaleTime);
         if (ChildDraggable == null) return;
 
-        ChildDraggable.ShowBeforeEverything();
+        ChildDraggable.BeginDragAllChildren();
     }
 
 
@@ -62,7 +63,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void OnEndDrag(PointerEventData eventData)
     {
         if (!IsActivable) return;
-
+        
         EndDragAllChildren();
 
         if (OutOfBounds(out Vector3 position)) transform.DOMove(position, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
@@ -71,6 +72,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void EndDragAllChildren()
     {
         Image.raycastTarget = true;
+        //transform.DOKill();
+        transform.DOScale(Vector3.one, GameManager.Instance.VisualData.CardDroppedScaleTime);
+
         if (ChildDraggable == null) return;
 
         ChildDraggable.EndDragAllChildren();
@@ -85,7 +89,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnDrop(PointerEventData eventData)
     {
-        UpdateCurrentDraggable();
+        //UpdateCurrentDraggable();
 
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
@@ -136,9 +140,10 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
     }
 
-    public void ResetCurrentDraggable()
+    public void ResetCurrentDraggable(bool child = true, bool parent = true)
     {
-        ChildDraggable = null;
+        if (child) ChildDraggable = null;
+        if (parent) ParentDraggable = null;
     }
 
     public void SetNewDraggable(DraggableCard newDraggable)
@@ -156,5 +161,11 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Update()
     {
         if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + GameManager.Instance?.VisualData.ParentOffset ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        //if (!Input.GetMouseButton(0))
+        //    transform.DOShakePosition(GameManager.Instance.VisualData.CardFocusShakeTime, GameManager.Instance.VisualData.CardFocusShakeForce);
     }
 }

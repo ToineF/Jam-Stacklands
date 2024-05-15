@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class Card : MonoBehaviour
             {
                 if (recipe.StrictOrderOfCords)
                 {
+                    indexes.Add(j);
                     if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j].Data) break;
                     checkCardsCount++;
                 }
@@ -52,21 +54,38 @@ public class Card : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(checkCardsCount);
+            Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
 
-            if (checkCardsCount >= cardsToCheck.Count)
+            if (checkCardsCount >= recipe.CardsNeeded.Count)
             {
                 // Recipe completed
                 Debug.Log("recipe completed");
-                StartRecipe(recipe);
+                StartRecipe(recipe, cardsToCheck, indexes);
                 break;
             }
         }
 
     }
 
-    private void StartRecipe(Recipe recipe)
+    private void StartRecipe(Recipe recipe, List<DraggableCard> allCards, List<int> usedCardsIndexes)
     {
+        // Delete cards if needed
+        for (int i = 0; i < usedCardsIndexes.Count; i++)
+        {
+            var card = allCards[i];
+            var cardData = card.Card.Data;
+            if (cardData as CardResourceData != null)
+            {
+                card.ParentDraggable?.ResetCurrentDraggable(true, false);
+                card.ChildDraggable?.ResetCurrentDraggable(false, true);
+                Destroy(card.gameObject);
+            }
+        }
+
+        // Spawn New Card
+        Card newCard = Instantiate(recipe.CardToSpawn, allCards[usedCardsIndexes[0]].transform.position, Quaternion.identity, transform.parent);
+        Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
+        newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
 
     }
 
