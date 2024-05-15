@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DG.Tweening;
 
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
@@ -15,6 +16,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private Image _image;
     private Vector3 _mouseOffset;
+    private Vector3 _previousPosition;
 
     private void Awake()
     {
@@ -31,14 +33,10 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         ParentTransform = transform.parent;
         _image.raycastTarget = false;
         _mouseOffset = transform.position - Input.mousePosition;
+        _previousPosition = transform.position;
+        transform.DOKill();
 
         ShowBeforeEverything();
-
-        if (ParentTransform.TryGetComponent(out DropZone dropZone))
-        {
-            dropZone.ResetCurrentDraggable();
-        }
-
     }
 
     public void ShowBeforeEverything()
@@ -61,6 +59,15 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (!IsActivable) return;
 
         _image.raycastTarget = true;
+
+        if (OutOfBounds()) transform.DOMove(_previousPosition, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
+    }
+
+    private bool OutOfBounds()
+    {
+        Vector2 min = GameManager.Instance.MinDragNDropZone.position;
+        Vector2 max = GameManager.Instance.MaxDragNDropZone.position;
+        return (transform.position.x < min.x || transform.position.x > max.x || transform.position.y < min.y || transform.position.y > max.y);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -70,7 +77,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 
-        Debug.Log(IsDraggableInParents(newDraggable));
         if (IsDraggableInParents(newDraggable)) return;
 
         if (ChildDraggable == null)
