@@ -12,6 +12,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform RootTransform { get; set; }
     public bool IsActivable { get; set; } = true;
 
+    [SerializeField] private Vector3 _parentCardOffset;
+    [SerializeField, Range(0, 1)] private float _cardFollowLerp;
+
     private Image _image;
     private Vector3 _mouseOffset;
 
@@ -24,11 +27,15 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!IsActivable) return;
 
-        ParentTransform = transform.parent;
-        transform.SetParent(RootTransform ?? transform.root);
+        //transform.SetParent(RootTransform ?? transform.root);
+        if (ParentDraggable != null) ParentDraggable.ChildDraggable = null;
         ParentDraggable = null;
+        ParentTransform = transform.parent;
         _image.raycastTarget = false;
         _mouseOffset = transform.position - Input.mousePosition;
+
+        transform.SetAsLastSibling();
+        // HERE MAKE CHILD PLAY LAST LINE RECURSIVELY (SetAsLastSibling loop)
 
         if (ParentTransform.TryGetComponent(out DropZone dropZone))
         {
@@ -58,7 +65,11 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 
-        if (newDraggable.ParentDraggable == this) return; // Ensure you can't drop cards on children
+        if (newDraggable.ParentDraggable == this) // HERE CONTINUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+        {
+            //newDraggable.ChildDraggable;
+            return; // Ensure you can't drop cards on children
+        }
 
         if (ChildDraggable == null)
         {
@@ -88,8 +99,13 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             newDraggable.ParentDraggable = this;
             ChildDraggable.ParentTransform = transform;
-            ChildDraggable.transform.SetParent(transform);
-            ChildDraggable.transform.localPosition = Vector3.down * 20;
+            //ChildDraggable.transform.SetParent(transform);
         }
     }
+
+    private void Update()
+    {
+        if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + _parentCardOffset, _cardFollowLerp);
+    }
+
 }
