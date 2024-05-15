@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -34,14 +35,21 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _image.raycastTarget = false;
         _mouseOffset = transform.position - Input.mousePosition;
 
-        transform.SetAsLastSibling();
-        // HERE MAKE CHILD PLAY LAST LINE RECURSIVELY (SetAsLastSibling loop)
+        ShowBeforeEverything();
 
         if (ParentTransform.TryGetComponent(out DropZone dropZone))
         {
             dropZone.ResetCurrentDraggable();
         }
 
+    }
+
+    public void ShowBeforeEverything()
+    {
+        transform.SetAsLastSibling();
+        if (ChildDraggable == null) return;
+
+        ChildDraggable.ShowBeforeEverything();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -65,11 +73,8 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 
-        if (newDraggable.ParentDraggable == this) // HERE CONTINUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-        {
-            //newDraggable.ChildDraggable;
-            return; // Ensure you can't drop cards on children
-        }
+        Debug.Log(IsDraggableInParents(newDraggable));
+        if (IsDraggableInParents(newDraggable)) return;
 
         if (ChildDraggable == null)
         {
@@ -77,6 +82,22 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
 
         if (ResetDraggableTransform) ChildDraggable.transform.localPosition = Vector3.zero;
+    }
+
+    public bool IsDraggableInChildren(DraggableCard draggable)
+    {
+        if (draggable == this) return true;
+        if (ChildDraggable == null) return false;
+
+        return ChildDraggable.IsDraggableInChildren(draggable);
+    }
+
+    public bool IsDraggableInParents(DraggableCard draggable)
+    {
+        if (draggable == this) return true;
+        if (ParentDraggable == null) return false;
+
+        return ParentDraggable.IsDraggableInParents(draggable);
     }
 
     public void UpdateCurrentDraggable()
