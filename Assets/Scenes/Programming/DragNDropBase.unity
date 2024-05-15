@@ -277,7 +277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560651965957637696, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: <Recipes>k__BackingField.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7560651965957637696, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: <Recipes>k__BackingField.Array.data[0]
