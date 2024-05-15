@@ -7,7 +7,6 @@ using DG.Tweening;
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
-    [field: SerializeField] public bool ResetDraggableTransform { get; private set; }
     public DraggableCard ChildDraggable { get; private set; }
     public DraggableCard ParentDraggable { get; private set; }
     public Transform ParentTransform { get; set; }
@@ -83,8 +82,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         {
             SetNewDraggable(newDraggable);
         }
-
-        if (ResetDraggableTransform) ChildDraggable.transform.localPosition = Vector3.zero;
     }
 
     public bool IsDraggableInChildren(DraggableCard draggable)
