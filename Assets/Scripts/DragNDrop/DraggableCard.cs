@@ -125,7 +125,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             newDraggable.ParentDraggable = this;
             ChildDraggable.ParentTransform = transform;
             //ChildDraggable.transform.SetParent(transform);
-            Card.CheckInteraction(newDraggable);
+            Card.CheckStack(newDraggable);
         }
     }
 
