@@ -50,7 +50,6 @@ public class Card : MonoBehaviour
                             break;
                         }
                     }
-                    //break;
                 }
             }
             Debug.Log(checkCardsCount);

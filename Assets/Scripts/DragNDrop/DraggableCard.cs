@@ -12,6 +12,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform ParentTransform { get; set; }
     public Transform RootTransform { get; set; }
     public bool IsActivable { get; set; } = true;
+    public Image Image => _image;
 
     private Image _image;
     private Vector3 _mouseOffset;
@@ -29,7 +30,6 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (ParentDraggable != null) ParentDraggable.ChildDraggable = null;
         ParentDraggable = null;
         ParentTransform = transform.parent;
-        _image.raycastTarget = false;
         _mouseOffset = transform.position - Input.mousePosition;
         transform.DOKill();
 
@@ -39,10 +39,12 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void ShowBeforeEverything()
     {
         transform.SetAsLastSibling();
+        Image.raycastTarget = false;
         if (ChildDraggable == null) return;
 
         ChildDraggable.ShowBeforeEverything();
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -60,11 +62,18 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!IsActivable) return;
 
-        _image.raycastTarget = true;
+        EndDragAllChildren();
 
         if (OutOfBounds(out Vector3 position)) transform.DOMove(position, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
     }
 
+    public void EndDragAllChildren()
+    {
+        Image.raycastTarget = true;
+        if (ChildDraggable == null) return;
+
+        ChildDraggable.ShowBeforeEverything();
+    }
     private bool OutOfBounds(out Vector3 position)
     {
         Vector2 min = GameManager.Instance.MinDragNDropZone.position;
