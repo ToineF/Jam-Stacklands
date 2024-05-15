@@ -2,15 +2,21 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform ParentTransform { get; set; }
+    public DropZone ParentDropZone { get; set; }
     public Transform RootTransform { get; set; }
-    public bool IsActivable { get; set; }
+    public bool IsActivable { get; set; } = true;
 
-    [Header("References")]
-    [SerializeField] private Image _image;
-    [SerializeField] private AudioClip _dragEndSound;
+    private Image _image;
+    //[SerializeField] private AudioClip _dragEndSound;
+
+    private void Awake()
+    {
+        _image = GetComponent<Image>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -18,7 +24,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         ParentTransform = transform.parent;
         transform.SetParent(RootTransform ?? transform.root);
+        ParentDropZone = null;
         _image.raycastTarget = false;
+
+        if (ParentTransform.TryGetComponent(out DropZone dropZone))
+        {
+            dropZone.ResetCurrentDraggable();
+        }
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -32,9 +45,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (!IsActivable) return;
 
-        transform.SetParent(ParentTransform);
-        transform.localPosition = Vector3.zero;
+        //transform.SetParent(ParentTransform);
+
         _image.raycastTarget = true;
+
 
         //MainGame.Instance?.AudioSource.PlayClip(_dragEndSound);
     }
