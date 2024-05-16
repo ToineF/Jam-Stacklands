@@ -63,6 +63,7 @@ public class Card : MonoBehaviour
         }
         _sellValueText.text = Data.SellPrice.ToString();
         _cardTypeImage.sprite = GameManager.Instance?.TypeImageData.GetValue(Data.Type);
+        _murderCompletedImage.gameObject.SetActive(HasCommitedMurder);
     }
 
     public void CheckStack(DraggableCard topCard)
@@ -105,7 +106,6 @@ public class Card : MonoBehaviour
 
                         if (recipe.CardsNeeded[k].Data == cardsToCheck[j].Card.Data)
                         {
-                            Debug.Log(k + "/" + j);
                             indexes.Add(j, !recipe.CardsNeeded[k].IsDestroyedAfterCraft);
                             checkedIndexes.Add(k);
                             checkCardsCount++;
@@ -114,7 +114,7 @@ public class Card : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
+            //Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
 
             if (checkCardsCount >= recipe.CardsNeeded.Count)
             {

@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
@@ -17,7 +18,10 @@ public class MainMenu : MonoBehaviour
     private float dynamicFastDistance;
     
     [SerializeField]
-    private float dynamicSpeed;
+    private float dynamicSpeed; 
+    
+    [SerializeField]
+    private string playSceneName;
 
     private bool _isTweening;
 
@@ -72,7 +76,7 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        
+        SceneManager.LoadScene(playSceneName);
     }
 
     public void Credits()
