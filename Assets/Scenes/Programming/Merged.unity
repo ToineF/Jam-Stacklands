@@ -500,6 +500,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 789269894265553474, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -155.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 789269894265553474, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -544,6 +548,10 @@ PrefabInstance:
     - target: {fileID: 789269894265553474, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 789269894265553474, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 155.3
       objectReference: {fileID: 0}
     - target: {fileID: 789269894265553474, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1233,6 +1241,7 @@ MonoBehaviour:
   <MaxDragNDropZone>k__BackingField: {fileID: 85467019}
   <Recipes>k__BackingField: []
   <CardPrefab>k__BackingField: {fileID: 0}
+  <TypeImageData>k__BackingField: {fileID: 11400000, guid: 5bb8c7c6dd7b0ad42843137f5656bf56, type: 2}
   fastForwardTimeScale: 4
 --- !u!4 &1963029886
 Transform:
