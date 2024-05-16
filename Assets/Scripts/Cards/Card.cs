@@ -8,26 +8,57 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour
 {
     [field: SerializeField] public CardData Data { get; set; }
+    public bool HasCommitedMurder { get; set; }
 
     [Header("References")]
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private Image _image;
     [SerializeField] private CanvasGroup _recipeGroup;
     [SerializeField] private Image _recipeFillImage;
+    [SerializeField] private Image _murderCompletedImage;
+    [SerializeField] private TMP_Text _lifeText;
+    [SerializeField] private TMP_Text _damageText;
+    [SerializeField] private TMP_Text _sellValueText;
+    [SerializeField] private Image _cardTypeImage;
 
     private float _currentRecipeTime;
     private float _currentRecipeCraftSpeed;
     private Coroutine _cookRoutine;
 
+    private float _currentLife;
+    private CardCharacterData _character;
+    public bool IsCharacter { get => _character != null; }
+
     private void Awake()
     {
+        CreateData();
         UpdateData();
+    }
+
+    private void CreateData()
+    {
+        if (Data.Type == CardData.CardType.Human || Data.Type == CardData.CardType.Demonic)
+        {
+            _character = Data as CardCharacterData;
+            _currentLife = _character.Life;
+        }
+        else
+        {
+            _lifeText.gameObject.SetActive(false);
+            _damageText.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateData()
     {
         _nameText.text = Data.Name;
         _image.sprite = Data.Sprite;
+        if (IsCharacter) {
+            _lifeText.text = _currentLife.ToString();
+            _damageText.text = _character.DamageGiven.ToString();
+        }
+        _sellValueText.text = Data.SellPrice.ToString();
+        _cardTypeImage.sprite = Data.Sprite;
     }
 
     public void CheckStack(DraggableCard topCard)
