@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Cristal Noir
   <Sprite>k__BackingField: {fileID: 21300000, guid: 07a8b4edddfa10143bc1a1fdfacf4b89, type: 3}
-  <CardsThatCanBeStackedOn>k__BackingField: []
+  <CardsThatCanBeStackedOn>k__BackingField:
+  - {fileID: 11400000, guid: ace79a6a9aaa70a4e8d53be930b8382b, type: 2}
+  - {fileID: 11400000, guid: deeffdbcc318ef8428618d13a16ef96f, type: 2}
+  - {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
+  - {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
+  - {fileID: 11400000}
   <SellPrice>k__BackingField: 4
   <Type>k__BackingField: 3
   <Life>k__BackingField: 0

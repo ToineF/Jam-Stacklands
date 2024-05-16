@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "B\xEAte Sacrificielle"
   <Sprite>k__BackingField: {fileID: 21300000, guid: 251a525d9059d8a4b936d37cd0503ff5, type: 3}
-  <CardsThatCanBeStackedOn>k__BackingField: []
+  <CardsThatCanBeStackedOn>k__BackingField:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: ace79a6a9aaa70a4e8d53be930b8382b, type: 2}
+  - {fileID: 11400000, guid: deeffdbcc318ef8428618d13a16ef96f, type: 2}
+  - {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
   <SellPrice>k__BackingField: 1
   <Type>k__BackingField: 2
