@@ -77,12 +77,13 @@ public class Card : MonoBehaviour
             int checkCardsCount = 0;
             var recipe = GameManager.Instance.Recipes[i];
             Dictionary<int, bool> indexes = new Dictionary<int, bool>();
+            List<int> checkedIndexes = new List<int>();
 
             for (int j = 0; j < cardsToCheck.Count; j++)
             {
                 if (recipe.StrictOrderOfCords)
                 {
-                    indexes.Add(j, recipe.CardsNeeded[j].IsDestroyedAfterCraft);
+                    indexes.Add(j, !recipe.CardsNeeded[j].IsDestroyedAfterCraft);
                     if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j].Data) break;
                     checkCardsCount++;
                 }
@@ -91,9 +92,9 @@ public class Card : MonoBehaviour
                     for (int k = 0; k < recipe.CardsNeeded.Count; k++)
                     {
                         bool willBreak = false;
-                        foreach (var index in indexes)
+                        foreach (var index in checkedIndexes)
                         {
-                            if (k == index.Key)
+                            if (k == index)
                             {
                                 willBreak = true;
                                 break;
@@ -104,14 +105,16 @@ public class Card : MonoBehaviour
 
                         if (recipe.CardsNeeded[k].Data == cardsToCheck[j].Card.Data)
                         {
-                            indexes.Add(k, recipe.CardsNeeded[k].IsDestroyedAfterCraft);
+                            Debug.Log(k + "/" + j);
+                            indexes.Add(j, !recipe.CardsNeeded[k].IsDestroyedAfterCraft);
+                            checkedIndexes.Add(k);
                             checkCardsCount++;
                             break;
                         }
                     }
                 }
             }
-            //Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
+            Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
 
             if (checkCardsCount >= recipe.CardsNeeded.Count)
             {
@@ -189,9 +192,11 @@ public class Card : MonoBehaviour
 
     public void AddToCheckStack(DraggableCard current, ref List<DraggableCard> list)
     {
+        if (current.ParentDraggable != null)
+        {
+            AddToCheckStack(current.ParentDraggable, ref list);
+        }
         list.Add(current);
-        if (current.ParentDraggable == null) return;
 
-        AddToCheckStack(current.ParentDraggable, ref list);
     }
 }

@@ -222,6 +222,14 @@ MonoBehaviour:
   <MaxDragNDropZone>k__BackingField: {fileID: 1675108554867514191}
   <Recipes>k__BackingField:
   - {fileID: 11400000, guid: 48bc4441c73f64f42b35108c2a579f41, type: 2}
+  - {fileID: 11400000, guid: 39758c4ad49b9874ea192cd3b9684415, type: 2}
+  - {fileID: 11400000, guid: fe2d75a5f6cb0c64ea2405f341f0b7a3, type: 2}
+  - {fileID: 11400000, guid: ba055e28247ed0645ae18099c5f55f20, type: 2}
+  - {fileID: 11400000, guid: 895322c56ccfb714ea63fdeef52afd25, type: 2}
+  - {fileID: 11400000, guid: cb217527248d8dd48b67cc7490179630, type: 2}
+  - {fileID: 11400000, guid: 19e2046254088e849ab1fd4b81c839e5, type: 2}
+  - {fileID: 11400000, guid: bb6773e0f784a01428630bd323be5eaf, type: 2}
+  - {fileID: 11400000, guid: bed44ee3c907921469e4f7a17eb4e71c, type: 2}
   <CardPrefab>k__BackingField: {fileID: 2774001228908938092, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
   <TypeImageData>k__BackingField: {fileID: 11400000, guid: 5bb8c7c6dd7b0ad42843137f5656bf56, type: 2}
   fastForwardTimeScale: 2
@@ -590,9 +598,9 @@ RectTransform:
   m_Father: {fileID: 2938553974974036459}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -163}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 281, y: -163}
   m_SizeDelta: {x: 556.8, y: 295.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6434211838481311633
@@ -891,7 +899,7 @@ PrefabInstance:
     - target: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: <Data>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+      objectReference: {fileID: 11400000, guid: ee68f03762312194198d3c4440fd0637, type: 2}
     - target: {fileID: 4151737354007600088, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_Name
       value: Card (8)
@@ -1025,7 +1033,7 @@ PrefabInstance:
     - target: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: <Data>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+      objectReference: {fileID: 11400000, guid: ee68f03762312194198d3c4440fd0637, type: 2}
     - target: {fileID: 4151737354007600088, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_Name
       value: Card (2)
@@ -1659,7 +1667,7 @@ PrefabInstance:
     - target: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: <Data>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+      objectReference: {fileID: 11400000, guid: ee68f03762312194198d3c4440fd0637, type: 2}
     - target: {fileID: 4151737354007600088, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_Name
       value: Card (7)
@@ -2250,6 +2258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1762986277875223391, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
+      propertyPath: timePerPhase
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 3323238282589285013, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: m_Name
       value: Game UI
@@ -2260,7 +2272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8194175749880798032, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: m_ReferenceResolution.x
-      value: 650
+      value: 1920
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
