@@ -112,6 +112,12 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
+        var timeRemaining = _currentRecipeCraftSpeed - _currentRecipeTime;
+        if (_cookRoutine != null && (timeRemaining > GameManager.Instance.CurrentMaxCookTime || gameObject == GameManager.Instance.CurrentMaxCookCard))
+        {
+            GameManager.Instance.CurrentMaxCookTime = Mathf.Max(timeRemaining, 0);
+            GameManager.Instance.CurrentMaxCookCard = gameObject;
+        }
         _currentRecipeTime += Time.deltaTime;
         _recipeFillImage.fillAmount = _currentRecipeTime / _currentRecipeCraftSpeed;
     }
