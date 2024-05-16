@@ -34,14 +34,14 @@ public class Card : MonoBehaviour
         {
             int checkCardsCount = 0;
             var recipe = GameManager.Instance.Recipes[i];
-            List<int> indexes = new List<int>();
+            Dictionary<int, bool> indexes = new Dictionary<int, bool>();
 
             for (int j = 0; j < cardsToCheck.Count; j++)
             {
                 if (recipe.StrictOrderOfCords)
                 {
-                    indexes.Add(j);
-                    if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j]) break;
+                    indexes.Add(j, recipe.CardsNeeded[j].IsDestroyedAfterCraft);
+                    if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j].Data) break;
                     checkCardsCount++;
                 }
                 else
@@ -51,7 +51,7 @@ public class Card : MonoBehaviour
                         bool willBreak = false;
                         foreach (var index in indexes)
                         {
-                            if (k == index)
+                            if (k == index.Key)
                             {
                                 willBreak = true;
                                 break;
@@ -60,9 +60,9 @@ public class Card : MonoBehaviour
 
                         if (willBreak) continue;
 
-                        if (recipe.CardsNeeded[k] == cardsToCheck[j].Card.Data)
+                        if (recipe.CardsNeeded[k].Data == cardsToCheck[j].Card.Data)
                         {
-                            indexes.Add(k);
+                            indexes.Add(k, recipe.CardsNeeded[k].IsDestroyedAfterCraft);
                             checkCardsCount++;
                             break;
                         }
@@ -82,21 +82,23 @@ public class Card : MonoBehaviour
 
     }
 
-    private void StartRecipe(Recipe recipe, List<DraggableCard> allCards, List<int> usedCardsIndexes)
+    private void StartRecipe(Recipe recipe, List<DraggableCard> allCards, Dictionary<int, bool> usedCardsIndexes)
     {
         // Delete cards if needed
-        for (int i = 0; i < usedCardsIndexes.Count; i++)
+        int lastKey = 0;
+        foreach (var index in usedCardsIndexes)
         {
-            var card = allCards[i];
+            lastKey = index.Key;
+            var card = allCards[index.Key];
             var cardData = card.Card.Data;
-            if (cardData as CardResourceData != null)
+            if (!index.Value)
             {
                 card.DestroyCard();
             }
         }
 
         // Spawn New Card
-        Card newCard = Instantiate(GameManager.Instance.CardPrefab, allCards[usedCardsIndexes[0]].transform.position, Quaternion.identity, transform.parent);
+        Card newCard = Instantiate(GameManager.Instance.CardPrefab, allCards[lastKey].transform.position, Quaternion.identity, transform.parent);
         newCard.Data = recipe.CardToSpawn;
         newCard.UpdateData();
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;

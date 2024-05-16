@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StrictOrderOfCords>k__BackingField: 0
   <CardsNeeded>k__BackingField:
-  - {fileID: 11400000, guid: 7144a5f386eb3364f9c80ac26e191767, type: 2}
-  - {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+  - <Data>k__BackingField: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+    <IsDestroyedAfterCraft>k__BackingField: 1
+  - <Data>k__BackingField: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
+    <IsDestroyedAfterCraft>k__BackingField: 0
+  - <Data>k__BackingField: {fileID: 11400000, guid: 7144a5f386eb3364f9c80ac26e191767, type: 2}
+    <IsDestroyedAfterCraft>k__BackingField: 0
   <CardToSpawn>k__BackingField: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
