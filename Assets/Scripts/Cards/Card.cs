@@ -25,9 +25,13 @@ public class Card : MonoBehaviour
     private float _currentRecipeCraftSpeed;
     private Coroutine _cookRoutine;
 
+    // character
+    public bool IsCharacter { get => _character != null; }
+    public float CurrentLife { get => _currentLife; set => _currentLife = value; }
+    public bool IsAlive { get => CurrentLife > 0; }
+
     private float _currentLife;
     private CardCharacterData _character;
-    public bool IsCharacter { get => _character != null; }
 
     private void Start()
     {
@@ -40,7 +44,7 @@ public class Card : MonoBehaviour
         if (Data.Type == CardData.CardType.Human || Data.Type == CardData.CardType.Demonic)
         {
             _character = Data as CardCharacterData;
-            _currentLife = _character.Life;
+            CurrentLife = _character.Life;
         }
         else
         {
@@ -54,7 +58,7 @@ public class Card : MonoBehaviour
         _nameText.text = Data.Name;
         _image.sprite = Data.Sprite;
         if (IsCharacter) {
-            _lifeText.text = _currentLife.ToString();
+            _lifeText.text = CurrentLife.ToString();
             _damageText.text = _character.DamageGiven.ToString();
         }
         _sellValueText.text = Data.SellPrice.ToString();

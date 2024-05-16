@@ -3,7 +3,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
-using Unity.VisualScripting;
 
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler
@@ -128,7 +127,14 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void TryDropNewDraggable(DraggableCard newDraggable)
     {
-        if (newDraggable.Card.Data.CardsThatCanBeStackedOn.Contains(Card.Data)) // Can Be Dropped
+        if ((Card.Data.Type == CardData.CardType.Human && newDraggable.Card.Data.Type == CardData.CardType.Demonic) || (Card.Data.Type == CardData.CardType.Demonic && newDraggable.Card.Data.Type == CardData.CardType.Human)) // Battle
+        {
+            if (Card.Data.Type == CardData.CardType.Demonic) // Demon Priority during fights
+                BattleWithCard(newDraggable);
+            else
+                newDraggable.BattleWithCard(this);
+        }
+        else if (newDraggable.Card.Data.CardsThatCanBeStackedOn.Contains(Card.Data)) // Can Be Dropped
         {
             SetNewDraggable(newDraggable);
         }
@@ -263,5 +269,38 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         ChildDraggable.DestroyAllChildren();
         DestroyCard();
+    }
+
+    private void BattleWithCard(DraggableCard other)
+    {
+        
+        var otherData = other.Card.Data as CardCharacterData;
+        var data = Card.Data as CardCharacterData;
+
+        if (otherData == null || data == null) return;
+
+        bool otherTurn = false;
+        while (other.Card.IsAlive && Card.IsAlive) // both are alive
+        {
+            if (otherTurn)
+            {
+                Card.CurrentLife -= otherData.DamageGiven;
+            }
+            else
+            {
+                other.Card.CurrentLife -= data.DamageGiven;
+            }
+            otherTurn = !otherTurn;
+        }
+        //Debug.Log("Self : " + Card.CurrentLife + ", Current : " + other.Card.CurrentLife);
+        if (other.Card.IsAlive)
+        {
+            other.UpdateCurrentDraggable();
+            DestroyCard(Card);
+        } else
+        {
+            UpdateCurrentDraggable();
+            other.DestroyCard();
+        }
     }
 }
