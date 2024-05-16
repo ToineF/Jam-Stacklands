@@ -1,12 +1,27 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
     [field: SerializeField] public CardData Data { get; private set; }
 
+    [Header("References")]
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private Image _image;
 
+    private void Awake()
+    {
+        UpdateData();
+    }
+
+    public void UpdateData()
+    {
+        _nameText.text = Data.Name;
+        _image.sprite = Data.Sprite;
+    }
 
     public void CheckStack(DraggableCard topCard)
     {
@@ -85,6 +100,7 @@ public class Card : MonoBehaviour
         // Spawn New Card
         Card newCard = Instantiate(GameManager.Instance.CardPrefab, allCards[usedCardsIndexes[0]].transform.position, Quaternion.identity, transform.parent);
         newCard.Data = recipe.CardToSpawn;
+        newCard.UpdateData();
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
         newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
 
