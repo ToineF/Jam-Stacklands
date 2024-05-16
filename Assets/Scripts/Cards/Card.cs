@@ -29,7 +29,7 @@ public class Card : MonoBehaviour
     private CardCharacterData _character;
     public bool IsCharacter { get => _character != null; }
 
-    private void Awake()
+    private void Start()
     {
         CreateData();
         UpdateData();
@@ -58,7 +58,7 @@ public class Card : MonoBehaviour
             _damageText.text = _character.DamageGiven.ToString();
         }
         _sellValueText.text = Data.SellPrice.ToString();
-        _cardTypeImage.sprite = Data.Sprite;
+        _cardTypeImage.sprite = GameManager.Instance?.TypeImageData.GetValue(Data.Type);
     }
 
     public void CheckStack(DraggableCard topCard)

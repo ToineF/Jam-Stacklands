@@ -222,8 +222,8 @@ MonoBehaviour:
   <MaxDragNDropZone>k__BackingField: {fileID: 1675108554867514191}
   <Recipes>k__BackingField:
   - {fileID: 11400000, guid: 48bc4441c73f64f42b35108c2a579f41, type: 2}
-  <CardPrefab>k__BackingField: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
-  <CurrentMaxCookTime>k__BackingField: 0
+  <CardPrefab>k__BackingField: {fileID: 2774001228908938092, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
+  <TypeImageData>k__BackingField: {fileID: 11400000, guid: 5bb8c7c6dd7b0ad42843137f5656bf56, type: 2}
   fastForwardTimeScale: 2
 --- !u!1 &2272043157917370122
 GameObject:
@@ -716,13 +716,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c6d188b2caf46f94bb1a65a4c86b1ced, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3160b8474d2519d4795408f94eaf39f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
