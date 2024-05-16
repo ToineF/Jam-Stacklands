@@ -54,6 +54,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         if (GameUI.Instance.MoonPhaseProgress.IsMoonPhaseOver)
         {
+            OnEndDrag(eventData);
             eventData.pointerDrag = null;
         }
 

@@ -23,6 +23,7 @@ public class EndOfMoonPhase : MonoBehaviour
         
         GameUI.Instance.MoonPhaseProgress.gameObject.SetActive(true);
         GameUI.Instance.MoonPhaseProgress.NextNight();
+        GameUI.Instance.MoonPhaseProgress.IsMoonPhaseOver = false;
         gameObject.SetActive(false);
     }
 }
