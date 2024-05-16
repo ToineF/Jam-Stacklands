@@ -20,7 +20,8 @@ public class MainMenu : MonoBehaviour
     private float dynamicSpeed;
 
     private bool _isTweening;
-    private bool _hasPressedAnyKey;
+
+    private MenuState _state;
 
     private void Update()
     {
@@ -29,25 +30,43 @@ public class MainMenu : MonoBehaviour
             return;
         }
 
-        if (_hasPressedAnyKey)
+        switch (_state)
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                MoveStuff(Direction.Right);
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.Quit();
-                return;
-            }
-
-            if (Input.anyKeyDown)
-            {
-                MoveStuff(Direction.Left);
-            }
+            case MenuState.TITLE_SCREEN:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                    return;
+                }
+                
+                if (Input.anyKeyDown)
+                {
+                    _state = MenuState.MENU;
+                    MoveStuff(Direction.Left);
+                }
+                
+                break;
+            
+            case MenuState.MENU:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    _state = MenuState.TITLE_SCREEN;
+                    MoveStuff(Direction.Right);
+                }
+                
+                break;
+            
+            case MenuState.CREDITS:
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    _state = MenuState.MENU;
+                    dynamicSlowDistance /= 4;
+                    dynamicFastDistance /= 4;
+                    dynamicSlow.DOLocalMoveX(dynamicSlowDistance, dynamicSpeed, true).OnComplete(() => _isTweening = false);
+                    dynamicFast.DOLocalMoveX(dynamicFastDistance, dynamicSpeed, true).OnComplete(() => _isTweening = false);
+                }
+                
+                break;
         }
     }
 
@@ -58,7 +77,15 @@ public class MainMenu : MonoBehaviour
 
     public void Credits()
     {
-        
+        if (_isTweening)
+        {
+            return;
+        }
+
+        _state = MenuState.CREDITS;
+        dynamicSlowDistance *= 4;
+        dynamicFastDistance *= 4;
+        MoveStuff(Direction.Left);
     }
 
     public void Quit()
@@ -74,10 +101,16 @@ public class MainMenu : MonoBehaviour
 
     private void MoveStuff(Direction direction)
     {
-        _hasPressedAnyKey = direction == Direction.Left;
         _isTweening = true;
         dynamicSlow.DOLocalMoveX(dynamicSlowDistance * (1 - (int) direction), dynamicSpeed, true).OnComplete(() => _isTweening = false);
         dynamicFast.DOLocalMoveX(dynamicFastDistance * (1 - (int) direction), dynamicSpeed, true).OnComplete(() => _isTweening = false);
         toHide.DOFade((int) direction, dynamicSpeed);
+    }
+
+    enum MenuState
+    {
+        TITLE_SCREEN,
+        MENU,
+        CREDITS
     }
 }
