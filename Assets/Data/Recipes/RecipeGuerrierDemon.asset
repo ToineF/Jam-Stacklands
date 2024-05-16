@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <StrictOrderOfCords>k__BackingField: 1
   <CardsNeeded>k__BackingField:
-  - {fileID: 0}
-  - {fileID: 0}
-  <CardToSpawn>k__BackingField: {fileID: 0}
+  - {fileID: 11400000, guid: a837fce66e422e04daefe63c191b6623, type: 2}
+  - {fileID: 11400000, guid: deeffdbcc318ef8428618d13a16ef96f, type: 2}
+  <CardToSpawn>k__BackingField: {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
