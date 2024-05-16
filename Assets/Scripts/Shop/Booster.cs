@@ -20,7 +20,7 @@ public class Booster : MonoBehaviour, IPointerClickHandler
     {
         for (int i = 0; i < _data.NumberToSpawn; i++)
         {
-            Card newCard = Instantiate(GameManager.Instance.CardPrefab, transform.position, Quaternion.identity, transform.parent);
+            Card newCard = Instantiate(GameManager.Instance.CardPrefab.Card, transform.position, Quaternion.identity, transform.parent);
             newCard.Data = GetRandomCard();
             newCard.UpdateData();
             Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;

@@ -99,7 +99,6 @@ public class Card : MonoBehaviour
 
     public void StopRecipe()
     {
-        Debug.Log("Stop Recipe");
         _recipeGroup.alpha = 0;
         if (_cookRoutine != null) StopCoroutine(_cookRoutine);
     }
@@ -135,7 +134,7 @@ public class Card : MonoBehaviour
         }
 
         // Spawn New Card
-        Card newCard = Instantiate(GameManager.Instance.CardPrefab, allCards[lastKey].transform.position, Quaternion.identity, transform.parent);
+        Card newCard = Instantiate(GameManager.Instance.CardPrefab.Card, allCards[lastKey].transform.position, Quaternion.identity, transform.parent);
         newCard.Data = recipe.CardToSpawn;
         newCard.UpdateData();
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;

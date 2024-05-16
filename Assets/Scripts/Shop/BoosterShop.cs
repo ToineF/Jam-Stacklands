@@ -29,7 +29,8 @@ public class BoosterShop : MonoBehaviour, IDropHandler
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 
-        if (newDraggable == null) return;
+        if (newDraggable.Card.Data as CardOfferingData == null) return;
+        //if (newDraggable == null) return;
 
         UpdateShop(newDraggable);
 
