@@ -155,6 +155,8 @@ MonoBehaviour:
   <VisualData>k__BackingField: {fileID: 0}
   <MinDragNDropZone>k__BackingField: {fileID: 0}
   <MaxDragNDropZone>k__BackingField: {fileID: 0}
+  <Recipes>k__BackingField: []
+  <CardPrefab>k__BackingField: {fileID: 0}
   fastForwardTimeScale: 2
 --- !u!4 &946366504
 Transform:
@@ -384,6 +386,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 322457841864830711, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 322457841864830711, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 53144a07ae4ed3f43a2efc15fde0113e, type: 3}
     - target: {fileID: 583807740313119358, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: m_Pivot.x
       value: 0
