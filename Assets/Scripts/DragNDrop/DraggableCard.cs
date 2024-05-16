@@ -273,14 +273,16 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void BattleWithCard(DraggableCard other)
     {
-        
+        // Battle Start
         var otherData = other.Card.Data as CardCharacterData;
         var data = Card.Data as CardCharacterData;
 
         if (otherData == null || data == null) return;
 
         bool otherTurn = false;
-        while (other.Card.IsAlive && Card.IsAlive) // both are alive
+
+        // Battle loop
+        while (other.Card.IsAlive && Card.IsAlive)
         {
             if (otherTurn)
             {
@@ -293,13 +295,17 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             otherTurn = !otherTurn;
         }
         //Debug.Log("Self : " + Card.CurrentLife + ", Current : " + other.Card.CurrentLife);
+
+        // Battle End
         if (other.Card.IsAlive)
         {
-            other.UpdateCurrentDraggable();
+            other.Card.HasCommitedMurder = true;
+            other.Card.UpdateData();
             DestroyCard(Card);
         } else
         {
-            UpdateCurrentDraggable();
+            Card.HasCommitedMurder = true;
+            Card.UpdateData();
             other.DestroyCard();
         }
     }
