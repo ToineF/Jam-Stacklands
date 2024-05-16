@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Card : MonoBehaviour
 {
-    [field: SerializeField] public CardData Data { get; private set; }
+    [field: SerializeField] public CardData Data { get; set; }
 
     [Header("References")]
     [SerializeField] private TMP_Text _nameText;

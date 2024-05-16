@@ -9,5 +9,6 @@ public abstract class CardData : ScriptableObject
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public int OfferingAmount { get; private set; }
     [field: SerializeField] public List<CardData> CardsThatCanBeStackedOn { get; private set; }
+    [field: SerializeField] public int SellPrice { get; private set; }
 
 }

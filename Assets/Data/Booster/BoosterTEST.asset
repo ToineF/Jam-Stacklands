@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NumberToSpawn>k__BackingField: 5
   <SpawnableCards>k__BackingField:
-  - <Card>k__BackingField: {fileID: 4984761664242408455, guid: ed6e1e47bf7858e40a2af9caa15ad944, type: 3}
+  - <Card>k__BackingField: {fileID: 11400000, guid: 7144a5f386eb3364f9c80ac26e191767, type: 2}
     <Probability>k__BackingField: 2
-  - <Card>k__BackingField: {fileID: 4270178719798497087, guid: 953dc07c608d96745873bc4077261378, type: 3}
+  - <Card>k__BackingField: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
     <Probability>k__BackingField: 4
+  <Price>k__BackingField: 0
