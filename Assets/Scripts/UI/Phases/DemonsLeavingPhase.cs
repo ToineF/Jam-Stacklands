@@ -18,7 +18,7 @@ public class DemonsLeavingPhase : MonoBehaviour
             }
         }
         
-        GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.DEMONS_LEAVE;
+        GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.NEW_MOON;
     }
 
     public void OnStateChanged(MoonPhaseProgress.State state, int night)
