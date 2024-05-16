@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     private float dynamicSpeed;
 
     private bool _isTweening;
+    private bool _hasPressedAnyKey;
 
     private void Update()
     {
@@ -27,21 +28,56 @@ public class MainMenu : MonoBehaviour
         {
             return;
         }
-        
-        if (Input.GetKeyDown(KeyCode.A))
+
+        if (_hasPressedAnyKey)
         {
-            _isTweening = true;
-            dynamicSlow.DOLocalMoveX(dynamicSlowDistance, dynamicSpeed, true).OnComplete(() => _isTweening = false);
-            dynamicFast.DOLocalMoveX(dynamicFastDistance, dynamicSpeed, true).OnComplete(() => _isTweening = false);
-            toHide.DOFade(0, dynamicSpeed);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                MoveStuff(Direction.Right);
+            }
         }
-        
-        if (Input.GetKeyDown(KeyCode.Escape))
+        else
         {
-            _isTweening = true;
-            dynamicSlow.DOLocalMoveX(0, dynamicSpeed, true).OnComplete(() => _isTweening = false);
-            dynamicFast.DOLocalMoveX(0, dynamicSpeed, true).OnComplete(() => _isTweening = false);
-            toHide.DOFade(1, dynamicSpeed);
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+                return;
+            }
+
+            if (Input.anyKeyDown)
+            {
+                MoveStuff(Direction.Left);
+            }
         }
+    }
+
+    public void Play()
+    {
+        
+    }
+
+    public void Credits()
+    {
+        
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    enum Direction
+    {
+        Left,
+        Right,
+    }
+
+    private void MoveStuff(Direction direction)
+    {
+        _hasPressedAnyKey = direction == Direction.Left;
+        _isTweening = true;
+        dynamicSlow.DOLocalMoveX(dynamicSlowDistance * (1 - (int) direction), dynamicSpeed, true).OnComplete(() => _isTweening = false);
+        dynamicFast.DOLocalMoveX(dynamicFastDistance * (1 - (int) direction), dynamicSpeed, true).OnComplete(() => _isTweening = false);
+        toHide.DOFade((int) direction, dynamicSpeed);
     }
 }
