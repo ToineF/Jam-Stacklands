@@ -15,6 +15,8 @@ public class OfferingShop : Shop, IDropHandler
 
         UpdateShop(newDraggable);
 
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardSell);
+
     }
 
     private void UpdateShop(DraggableCard card)

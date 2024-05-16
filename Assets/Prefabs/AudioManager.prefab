@@ -174,6 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47c3229e2a87fa4babed3156a3a3ae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Data>k__BackingField: {fileID: 11400000, guid: 6ce2e7c2a63dad54eb9f8ac55a17f588, type: 2}
   _sfxSource: {fileID: 3396244911533805631}
   _mainMusicSource: {fileID: 7062176157845392888}
   _mainMusicAudioFadeTime: 2

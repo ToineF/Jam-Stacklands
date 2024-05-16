@@ -34,6 +34,8 @@ public class BoosterShop : Shop, IDropHandler
 
         UpdateShop(newDraggable);
 
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.BoosterBuy);
+
     }
 
     private void UpdateShop(DraggableCard card)

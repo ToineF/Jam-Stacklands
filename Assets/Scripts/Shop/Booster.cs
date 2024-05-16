@@ -35,6 +35,8 @@ public class Booster : MonoBehaviour, IPointerClickHandler
             
             GameManager.Instance.CurrentCards.Add(newCard);
         }
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardSpawn);
+
         Destroy(gameObject);
     }
 

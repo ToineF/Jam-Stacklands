@@ -53,6 +53,8 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         _mouseOffset = transform.position - Input.mousePosition;
         GetYoungestChild().Card.StopRecipe();
 
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardDragBegin);
+
 
         BeginDragAllChildren();
     }
@@ -90,6 +92,9 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         EndDragAllChildren();
 
         if (OutOfBounds(out Vector3 position)) transform.DOMove(position, GameManager.Instance.VisualData.CardOutOfBoundsLerpTime);
+
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardDragEnd);
+
     }
 
     public void EndDragAllChildren()

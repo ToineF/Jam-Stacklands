@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290f2cfe1364e8b4cacf3704d78448cf, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: 
+  <CardDragBegin>k__BackingField: {fileID: 8300000, guid: 4bcebbcf9e7a93f40b8c607caa646aa5, type: 3}
+  <CardDragEnd>k__BackingField: {fileID: 8300000, guid: 35dbfa3ccc00f6941b9d07f48a822c8a, type: 3}
+  <CardsCraft>k__BackingField: {fileID: 8300000, guid: ba664d4ab231fa448b190c5e53f4de5c, type: 3}
+  <CardSpawn>k__BackingField: {fileID: 8300000, guid: 639b0f3826d83064d9f2c8831be24a9a, type: 3}
+  <CardSell>k__BackingField: {fileID: 8300000, guid: 11f8320a0442c5843a68271bee2e8301, type: 3}
+  <BoosterBuy>k__BackingField: {fileID: 8300000, guid: 33a2df9d659b7e94cbd6b5f6992744e0, type: 3}
+  <UIClick>k__BackingField: {fileID: 8300000, guid: 86828022006e7b54cac877fa1fc3ee01, type: 3}

@@ -188,6 +188,8 @@ public class Card : MonoBehaviour
         newCard.UpdateData();
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
         newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
+
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardsCraft);
     }
 
     public void AddToCheckStack(DraggableCard current, ref List<DraggableCard> list)

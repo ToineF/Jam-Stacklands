@@ -5,6 +5,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
+    [field:SerializeField] public AudioData Data { get; private set; }
+
     [SerializeField] private AudioSource _sfxSource;
     [SerializeField] private AudioSource _mainMusicSource;
     [SerializeField] private float _mainMusicAudioFadeTime;
