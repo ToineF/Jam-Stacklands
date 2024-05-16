@@ -2,7 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class OfferingShop : MonoBehaviour, IDropHandler
+public class OfferingShop : Shop, IDropHandler
 {
     [SerializeField] private CardData _offeringData;
     public void OnDrop(PointerEventData eventData)

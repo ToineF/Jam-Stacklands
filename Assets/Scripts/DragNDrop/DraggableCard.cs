@@ -16,6 +16,19 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public bool IsActivable { get; set; } = true;
     public Image Image => _image;
 
+    public bool IsOverShop {
+        get => _isOverShop;
+        set
+        {
+            if (ChildDraggable == null) return;
+
+            _isOverShop = value;
+            ChildDraggable.IsOverShop = value;
+        }
+    }
+
+    private bool _isOverShop;
+
     private Image _image;
     private Vector3 _mouseOffset;
 
@@ -181,7 +194,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     private void Update()
     {
-        if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + GameManager.Instance?.VisualData.ParentOffset ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
+        if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + (IsOverShop ? GameManager.Instance?.VisualData.OverShopParentOffset : GameManager.Instance?.VisualData.ParentOffset) ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

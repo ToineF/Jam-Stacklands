@@ -8,6 +8,7 @@ public class BoosterData : ScriptableObject
     [field: SerializeField] public int NumberToSpawn { get; private set; }
     [field: SerializeField] public List<CardProbabilityPair> SpawnableCards { get; private set; }
     [field: SerializeField] public int Price { get; private set; }
+    [field: SerializeField] public Sprite Sprite{ get; private set; }
 }
 
 [Serializable]

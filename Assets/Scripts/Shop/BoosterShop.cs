@@ -3,8 +3,9 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class BoosterShop : MonoBehaviour, IDropHandler
+public class BoosterShop : Shop, IDropHandler
 {
     [SerializeField] private Booster _boosterPrefab;
     [SerializeField] private BoosterData _boosterToSpawn;

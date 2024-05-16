@@ -27,4 +27,7 @@ public class DragNDropVisualData : ScriptableObject
     [field:Header("Booster Buy")]
     [field:SerializeField] public float BoosterEjectionTime { get; private set; }
     [field:SerializeField] public float BoosterEjectionSpeed { get; private set; }
+
+    [field:Header("Shop")]
+    [field:SerializeField] public Vector2 OverShopParentOffset { get; private set; }
 }

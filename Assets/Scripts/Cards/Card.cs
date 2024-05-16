@@ -143,6 +143,11 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
+        UpdateCraftCount();
+    }
+
+    private void UpdateCraftCount()
+    {
         var timeRemaining = _currentRecipeCraftSpeed - _currentRecipeTime;
         if (_cookRoutine != null && (timeRemaining > GameManager.Instance.CurrentMaxCookTime || gameObject == GameManager.Instance.CurrentMaxCookCard))
         {

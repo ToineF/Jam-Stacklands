@@ -21,3 +21,4 @@ MonoBehaviour:
   - <Card>k__BackingField: {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
     <Probability>k__BackingField: 1
   <Price>k__BackingField: 10
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 3160b8474d2519d4795408f94eaf39f7, type: 3}

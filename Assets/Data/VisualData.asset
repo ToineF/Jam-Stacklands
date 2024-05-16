@@ -26,3 +26,4 @@ MonoBehaviour:
   <CardSpawnTime>k__BackingField: 0.2
   <BoosterEjectionTime>k__BackingField: 0.4
   <BoosterEjectionSpeed>k__BackingField: 270
+  <OverShopParentOffset>k__BackingField: {x: 0, y: -10}
