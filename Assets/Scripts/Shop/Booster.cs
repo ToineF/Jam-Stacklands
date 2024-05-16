@@ -5,7 +5,14 @@ using UnityEngine.EventSystems;
 
 public class Booster : MonoBehaviour, IPointerClickHandler
 {
-    public BoosterData Data => _data;
+    public BoosterData Data
+    {
+        get => _data;
+        set
+        {
+            _data = value;
+        }
+    }
 
     [SerializeField] private BoosterData _data;
 

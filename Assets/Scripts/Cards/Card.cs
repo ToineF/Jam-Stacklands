@@ -91,9 +91,7 @@ public class Card : MonoBehaviour
             var cardData = card.Card.Data;
             if (cardData as CardResourceData != null)
             {
-                card.ParentDraggable?.ResetCurrentDraggable(true, false);
-                card.ChildDraggable?.ResetCurrentDraggable(false, true);
-                Destroy(card.gameObject);
+                card.DestroyCard();
             }
         }
 

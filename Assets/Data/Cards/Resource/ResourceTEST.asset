@@ -17,6 +17,7 @@ MonoBehaviour:
   <OfferingAmount>k__BackingField: 0
   <CardsThatCanBeStackedOn>k__BackingField:
   - {fileID: 11400000}
+  <SellPrice>k__BackingField: 1
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0
   <CardToSpawnOnCraft>k__BackingField: {fileID: 0}

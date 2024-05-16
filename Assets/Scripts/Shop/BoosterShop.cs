@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
@@ -5,7 +6,8 @@ using UnityEngine.EventSystems;
 
 public class BoosterShop : MonoBehaviour, IDropHandler
 {
-    [SerializeField] private Booster _boosterToSpawn;
+    [SerializeField] private Booster _boosterPrefab;
+    [SerializeField] private BoosterData _boosterToSpawn;
     [SerializeField] private TMP_Text _priceText;
 
     private int _currentPrice;
@@ -17,12 +19,13 @@ public class BoosterShop : MonoBehaviour, IDropHandler
 
     private void ResetPrice()
     {
-        _currentPrice = _boosterToSpawn.Data.Price;
+        _currentPrice = _boosterToSpawn.Price;
         _priceText.text = _currentPrice.ToString();
     }
 
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log("frefndjklfds");
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 
@@ -34,12 +37,20 @@ public class BoosterShop : MonoBehaviour, IDropHandler
 
     private void UpdateShop(DraggableCard card)
     {
-        _currentPrice -= card.Card.Data.SellPrice;
-        _priceText.text = _currentPrice.ToString();
+        card.DoForAllChildrenBefore(() =>
+        {
+            _currentPrice -= card.Card.Data.SellPrice;
+            _priceText.text = _currentPrice.ToString();
+        });
+        card.DestroyAllChildren();
+
 
         if (_currentPrice <= 0)
         {
-            Instantiate(_boosterToSpawn, transform.position, Quaternion.identity);
+            Booster booster = Instantiate(_boosterPrefab, transform.position, Quaternion.identity, transform.parent.parent);
+            Vector3 targetPosition = transform.position + Vector3.down * GameManager.Instance.VisualData.BoosterEjectionSpeed;
+            booster.transform.DOMove(targetPosition, GameManager.Instance.VisualData.BoosterEjectionTime);
+            booster.Data = _boosterToSpawn;
             ResetPrice();
         }
     }

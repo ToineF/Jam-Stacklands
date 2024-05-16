@@ -24,4 +24,7 @@ public class DragNDropVisualData : ScriptableObject
     [field:Header("Spawn")]
     [field:SerializeField] public float CardSpawnDistance { get; private set; }
     [field:SerializeField] public float CardSpawnTime { get; private set; }
+    [field:Header("Booster Buy")]
+    [field:SerializeField] public float BoosterEjectionTime { get; private set; }
+    [field:SerializeField] public float BoosterEjectionSpeed { get; private set; }
 }

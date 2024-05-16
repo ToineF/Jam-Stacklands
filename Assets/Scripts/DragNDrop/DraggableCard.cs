@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using Unity.VisualScripting;
 
 [RequireComponent(typeof(Image))]
 public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerEnterHandler
@@ -168,5 +169,66 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         //if (!Input.GetMouseButton(0))
         //    transform.DOShakePosition(GameManager.Instance.VisualData.CardFocusShakeTime, GameManager.Instance.VisualData.CardFocusShakeForce);
+    }
+
+    public void DestroyCard(bool child = true, bool parent = true)
+    {
+        if (parent) ParentDraggable?.ResetCurrentDraggable(true, false);
+        if (child) ChildDraggable?.ResetCurrentDraggable(false, true);
+        Destroy(gameObject);
+    }
+
+    public void DoForAllChildren(Action action)
+    {
+        action.Invoke();
+
+        if (ChildDraggable == null) return;
+
+        ChildDraggable.DoForAllChildren(action);
+    }
+
+    public void DoForAllChildrenBefore(Action action)
+    {
+        if (ChildDraggable == null)
+        {
+            action.Invoke();
+            return;
+        }
+        ChildDraggable.DoForAllChildrenBefore(action);
+        action.Invoke();
+    }
+
+    public void DoForAllParents(Action action)
+    {
+        action.Invoke();
+
+        if (ParentDraggable == null) return;
+
+        ParentDraggable.DoForAllChildren(action);
+    }
+
+    public DraggableCard GetYoungestChild()
+    {
+        if (ChildDraggable == null) return this;
+
+        return ChildDraggable.GetYoungestChild();
+    }
+
+    public DraggableCard GetOldestParent()
+    {
+        if (ParentDraggable == null) return this;
+
+        return ParentDraggable.GetOldestParent();
+    }
+
+    public void DestroyAllChildren()
+    {
+        if (ChildDraggable == null)
+        {
+            DestroyCard();
+            return;
+        }
+        ChildDraggable.DestroyAllChildren();
+        DestroyCard();
     }
 }

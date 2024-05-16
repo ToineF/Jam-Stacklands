@@ -24,3 +24,5 @@ MonoBehaviour:
   <CardFocusShakeTime>k__BackingField: 0.2
   <CardSpawnDistance>k__BackingField: 200
   <CardSpawnTime>k__BackingField: 0.2
+  <BoosterEjectionTime>k__BackingField: 0.4
+  <BoosterEjectionSpeed>k__BackingField: 270

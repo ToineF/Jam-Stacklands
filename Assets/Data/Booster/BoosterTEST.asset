@@ -18,4 +18,4 @@ MonoBehaviour:
     <Probability>k__BackingField: 2
   - <Card>k__BackingField: {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
     <Probability>k__BackingField: 4
-  <Price>k__BackingField: 0
+  <Price>k__BackingField: 5
