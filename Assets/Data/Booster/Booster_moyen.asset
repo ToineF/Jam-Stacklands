@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6af4f1d929f8ef54da59915daa18e6ea, type: 3}
   m_Name: Booster_moyen
   m_EditorClassIdentifier: 
-  <NumberToSpawn>k__BackingField: 7
+  <NumberToSpawn>k__BackingField: 6
   <SpawnableCards>k__BackingField:
   - <Card>k__BackingField: {fileID: 11400000, guid: ace79a6a9aaa70a4e8d53be930b8382b, type: 2}
     <Probability>k__BackingField: 4
