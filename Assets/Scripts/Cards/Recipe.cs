@@ -6,6 +6,6 @@ using UnityEngine;
 public class Recipe : ScriptableObject
 {
     [field: SerializeField] public bool StrictOrderOfCords { get; private set; }
-    [field: SerializeField] public List<Card> CardsNeeded { get; private set; }
-    [field: SerializeField] public Card CardToSpawn { get; private set; }
+    [field: SerializeField] public List<CardData> CardsNeeded { get; private set; }
+    [field: SerializeField] public CardData CardToSpawn { get; private set; }
 }

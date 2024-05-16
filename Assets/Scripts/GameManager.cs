@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Transform MinDragNDropZone { get; private set; }
     [field: SerializeField] public Transform MaxDragNDropZone { get; private set; }
     [field: SerializeField] public Recipe[] Recipes { get; private set; }
+    [field: SerializeField] public Card CardPrefab { get; private set; }
 
     [Header("Params")]
     [SerializeField]

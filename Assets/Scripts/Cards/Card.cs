@@ -26,7 +26,7 @@ public class Card : MonoBehaviour
                 if (recipe.StrictOrderOfCords)
                 {
                     indexes.Add(j);
-                    if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j].Data) break;
+                    if (cardsToCheck[j].Card.Data != recipe.CardsNeeded[j]) break;
                     checkCardsCount++;
                 }
                 else
@@ -45,7 +45,7 @@ public class Card : MonoBehaviour
 
                         if (willBreak) continue;
 
-                        if (recipe.CardsNeeded[k].Data == cardsToCheck[j].Card.Data)
+                        if (recipe.CardsNeeded[k] == cardsToCheck[j].Card.Data)
                         {
                             indexes.Add(k);
                             checkCardsCount++;
@@ -83,7 +83,8 @@ public class Card : MonoBehaviour
         }
 
         // Spawn New Card
-        Card newCard = Instantiate(recipe.CardToSpawn, allCards[usedCardsIndexes[0]].transform.position, Quaternion.identity, transform.parent);
+        Card newCard = Instantiate(GameManager.Instance.CardPrefab, allCards[usedCardsIndexes[0]].transform.position, Quaternion.identity, transform.parent);
+        newCard.Data = recipe.CardToSpawn;
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
         newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
 

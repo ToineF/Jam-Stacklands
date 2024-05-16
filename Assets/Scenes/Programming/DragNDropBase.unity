@@ -717,6 +717,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7560651965957637696, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
+      propertyPath: <CardPrefab>k__BackingField
+      value: 
+      objectReference: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
     - target: {fileID: 7849629029486950641, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 3
