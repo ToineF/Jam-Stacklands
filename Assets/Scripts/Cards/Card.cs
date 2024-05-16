@@ -133,6 +133,9 @@ public class Card : MonoBehaviour
         _currentRecipeCraftSpeed = recipe.CraftSpeed;
         _recipeGroup.alpha = 1;
         _cookRoutine = StartCoroutine(CookRecipe(recipe, allCards, usedCardsIndexes));
+
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardsCraft);
+
     }
 
     public void StopRecipe()
@@ -189,7 +192,7 @@ public class Card : MonoBehaviour
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
         newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
 
-        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardsCraft);
+        AudioManager.Instance?.PlayClip(AudioManager.Instance.Data.CardSpawn);
     }
 
     public void AddToCheckStack(DraggableCard current, ref List<DraggableCard> list)

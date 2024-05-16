@@ -10,12 +10,14 @@ public class BoosterShop : Shop, IDropHandler
     [SerializeField] private Booster _boosterPrefab;
     [SerializeField] private BoosterData _boosterToSpawn;
     [SerializeField] private TMP_Text _priceText;
+    [SerializeField] private Image _visual;
 
     private int _currentPrice;
 
     private void Awake()
     {
         ResetPrice();
+        _visual.sprite = _boosterToSpawn.Sprite;
     }
 
     private void ResetPrice()
