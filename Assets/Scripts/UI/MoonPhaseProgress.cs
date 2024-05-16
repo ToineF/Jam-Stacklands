@@ -115,6 +115,7 @@ public class MoonPhaseProgress : MonoBehaviour
             if (GameManager.Instance.IsPaused)
             {
                 GameManager.Instance.IsPaused = false;
+                GameManager.Instance.IsFastForwarding = false;
             }
             else
             {
