@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Minerai Noir
   <Sprite>k__BackingField: {fileID: 0}
-  <OfferingAmount>k__BackingField: 1
+  <CardsThatCanBeStackedOn>k__BackingField: []
+  <SellPrice>k__BackingField: 0
+  <Type>k__BackingField: 3
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0
-  <CardToSpawnOnCraft>k__BackingField: {fileID: 11400000, guid: 090026cdab816a94db17349af15e79ac, type: 2}
-  <IsDestroyedAfterCraft>k__BackingField: 1

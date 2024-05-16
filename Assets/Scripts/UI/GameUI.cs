@@ -8,7 +8,11 @@ public class GameUI : MonoBehaviour
     
     [Header("Moon Stuff")]
     public MoonPhaseProgress MoonPhaseProgress;
-    public EndOfMoonPhase EndOfMoonPhase;
+    public WaitingCraftPhase WaitingCraftPhase;
+    public HumansAttackingPhase HumansAttackingPhase;
+    public HumansSpawningPhase HumansSpawningPhase;
+    public DemonsLeavingPhase DemonsLeavingPhase;
+    public NewMoonPhase NewMoonPhase;
 
     private void Awake()
     {
@@ -18,7 +22,11 @@ public class GameUI : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnPauseStateChanged += OnPause;
-        MoonPhaseProgress.MoonPhaseOverEvent += EndOfMoonPhase.EndOfMoon;
+        MoonPhaseProgress.OnStateChanged += WaitingCraftPhase.OnStateChanged;
+        MoonPhaseProgress.OnStateChanged += HumansAttackingPhase.OnStateChanged;
+        MoonPhaseProgress.OnStateChanged += HumansSpawningPhase.OnStateChanged;
+        MoonPhaseProgress.OnStateChanged += DemonsLeavingPhase.OnStateChanged;
+        MoonPhaseProgress.OnStateChanged += NewMoonPhase.OnStateChanged;
     }
 
     private void OnPause(bool isPaused)

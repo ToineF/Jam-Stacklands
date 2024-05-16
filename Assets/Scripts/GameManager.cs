@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -39,6 +41,12 @@ public class GameManager : MonoBehaviour
             _isPaused = value;
             OnPauseStateChanged.Invoke(value);
         }
+    }
+
+    public List<Card> CurrentCards { get; } = new List<Card>();
+    public bool HasEnemies
+    {
+        get => CurrentCards.Any(card => card.Data.Type == CardData.CardType.Human);
     }
 
     public Action<bool> OnPauseStateChanged;

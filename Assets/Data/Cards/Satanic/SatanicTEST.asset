@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: SatanicTEST
   m_EditorClassIdentifier: 
   <Name>k__BackingField: 
-  <Image>k__BackingField: {fileID: 0}
-  <OfferingAmount>k__BackingField: 0
+  <Sprite>k__BackingField: {fileID: 0}
+  <CardsThatCanBeStackedOn>k__BackingField: []
+  <SellPrice>k__BackingField: 0
+  <Type>k__BackingField: 2

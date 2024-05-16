@@ -28,6 +28,12 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!IsActivable) return;
 
+        if (GameUI.Instance.MoonPhaseProgress.GameState != MoonPhaseProgress.State.NIGHT_START)
+        {
+            eventData.pointerDrag = null;
+            return;
+        }
+
         //transform.SetParent(RootTransform ?? transform.root);
         if (ParentDraggable != null) ParentDraggable.ChildDraggable = null;
         ParentDraggable = null;
@@ -55,10 +61,11 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (!IsActivable) return;
 
-        if (GameUI.Instance.MoonPhaseProgress.IsMoonPhaseOver)
+        if (GameUI.Instance.MoonPhaseProgress.GameState != MoonPhaseProgress.State.NIGHT_START)
         {
             OnEndDrag(eventData);
             eventData.pointerDrag = null;
+            return;
         }
 
         transform.position = Input.mousePosition + _mouseOffset;
@@ -187,6 +194,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (parent) ParentDraggable?.ResetCurrentDraggable(true, false);
         if (child) ChildDraggable?.ResetCurrentDraggable(false, true);
+        GameManager.Instance.CurrentCards.Remove(Card);
         Destroy(gameObject);
     }
 

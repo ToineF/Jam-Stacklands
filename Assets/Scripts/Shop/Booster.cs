@@ -25,6 +25,8 @@ public class Booster : MonoBehaviour, IPointerClickHandler
             newCard.UpdateData();
             Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
             newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
+            
+            GameManager.Instance.CurrentCards.Add(newCard);
         }
         Destroy(gameObject);
     }

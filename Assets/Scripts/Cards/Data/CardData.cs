@@ -9,5 +9,15 @@ public abstract class CardData : ScriptableObject
     [field: SerializeField] public Sprite Sprite { get; private set; }
     [field: SerializeField] public List<CardData> CardsThatCanBeStackedOn { get; private set; }
     [field: SerializeField] public int SellPrice { get; private set; }
+    [field: SerializeField] public CardType Type { get; private set; }
+
+    public enum CardType
+    {
+        Human,
+        Demonic,
+        Satanic,
+        Resource,
+        Offering,
+    }
 
 }

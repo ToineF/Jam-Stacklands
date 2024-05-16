@@ -24,16 +24,25 @@ public class MoonPhaseProgress : MonoBehaviour
     private TMP_Text nightsText;
     private int _currentNightCounter;
 
-    [HideInInspector]
-    public bool IsMoonPhaseOver;
+    public Action<State, int> OnStateChanged;
 
-    public Action MoonPhaseOverEvent;
+    private State _state;
+    public State GameState
+    {
+        get => _state;
+        set
+        {
+            _state = value;
+            OnStateChanged.Invoke(_state, _currentNightCounter);
+        }
+    }
 
     void Start()
     {
         _currentNightCounter = 1;
         GameManager.Instance.OnPauseStateChanged += OnPause;
         GameManager.Instance.OnFastForward += OnFastForward;
+        OnStateChanged += _OnStateChanged;
         
         Restart();
     }
@@ -41,15 +50,6 @@ public class MoonPhaseProgress : MonoBehaviour
     private void OnFastForward(bool isFastForwarding)
     {
         playPauseImage.sprite = isFastForwarding ? fastSprite : playSprite;
-    }
-
-    public void NextNight()
-    {
-        IsMoonPhaseOver = false;
-        _currentNightCounter++;
-        nightsText.text = "Night " + _currentNightCounter;
-        
-        Restart();
     }
 
     private void OnPause(bool isPaused)
@@ -66,7 +66,7 @@ public class MoonPhaseProgress : MonoBehaviour
 
     void Update()
     {
-        if (IsMoonPhaseOver)
+        if (GameState != State.NIGHT_START)
         {
             return;
         }
@@ -83,9 +83,24 @@ public class MoonPhaseProgress : MonoBehaviour
         {
             return;
         }
-        
-        IsMoonPhaseOver = true;
-        MoonPhaseOverEvent?.Invoke();
+
+        if (GameManager.Instance.CurrentMaxCookTime > 0.0f)
+        {
+            GameState = State.WAIT_CRAFTS;
+        }
+        else if (GameManager.Instance.HasEnemies)
+        {
+            GameState = State.COMBAT_START;
+        }
+        else
+        {
+            GameState = State.NEW_MOON;
+        }
+    }
+    
+    private void _OnStateChanged(State state, int night)
+    {
+        gameObject.SetActive(state == State.NIGHT_START);
     }
 
     private void HandleInputs()
@@ -106,6 +121,14 @@ public class MoonPhaseProgress : MonoBehaviour
                 GameManager.Instance.IsFastForwarding = !GameManager.Instance.IsFastForwarding;
             }
         }
+    }
+
+    public void NextNight()
+    {
+        _currentNightCounter++;
+        nightsText.text = "Night " + _currentNightCounter;
+        
+        Restart();
     }
 
     void Restart()
@@ -129,5 +152,15 @@ public class MoonPhaseProgress : MonoBehaviour
             GameManager.Instance.IsFastForwarding = false;
             GameManager.Instance.IsPaused = true;
         }
+    }
+
+    public enum State
+    {
+        NIGHT_START,
+        WAIT_CRAFTS,
+        COMBAT_START,
+        COMBAT_END,
+        DEMONS_LEAVE,
+        NEW_MOON,
     }
 }

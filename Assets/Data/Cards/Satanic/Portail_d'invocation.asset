@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Portail D'invocation
   <Sprite>k__BackingField: {fileID: 0}
-  <OfferingAmount>k__BackingField: 3
+  <CardsThatCanBeStackedOn>k__BackingField: []
+  <SellPrice>k__BackingField: 0
+  <Type>k__BackingField: 2
