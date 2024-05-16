@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 028cc16a9451b0141bb4531c32c56af2, type: 3}
   m_Name: VisualData
   m_EditorClassIdentifier: 
-  <ParentOffset>k__BackingField: {x: 0, y: -20}
+  <ParentOffset>k__BackingField: {x: 0, y: -28}
   <CardFollowLerp>k__BackingField: 0.11
   <CardOutOfBoundsLerpTime>k__BackingField: 0.3
   <CardRepelDistance>k__BackingField: -150

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DemonTEST
   m_EditorClassIdentifier: 
   <Name>k__BackingField: DEMON
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 0d5aee0397a0ac5479e853cac5206ec9, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField:
   - {fileID: 11400000}
   - {fileID: 11400000, guid: d1f255fef8af48a4c81b9b0ca206a89b, type: 2}
