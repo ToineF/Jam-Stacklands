@@ -14,21 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <NumberToSpawn>k__BackingField: 4
   <SpawnableCards>k__BackingField:
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
-  - <Card>k__BackingField: {fileID: 0}
-    <Probability>k__BackingField: 0
+  - <Card>k__BackingField: {fileID: 11400000, guid: ace79a6a9aaa70a4e8d53be930b8382b, type: 2}
+    <Probability>k__BackingField: 5
+  - <Card>k__BackingField: {fileID: 11400000, guid: deeffdbcc318ef8428618d13a16ef96f, type: 2}
+    <Probability>k__BackingField: 2
+  - <Card>k__BackingField: {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
+    <Probability>k__BackingField: 1
+  - <Card>k__BackingField: {fileID: 11400000, guid: 77020b89ae2f4624aa308a517b76687f, type: 2}
+    <Probability>k__BackingField: 5
+  - <Card>k__BackingField: {fileID: 11400000, guid: 090026cdab816a94db17349af15e79ac, type: 2}
+    <Probability>k__BackingField: 2
+  - <Card>k__BackingField: {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
+    <Probability>k__BackingField: 1
+  - <Card>k__BackingField: {fileID: 11400000, guid: 3c0274f2ff987d2428807638269b6f39, type: 2}
+    <Probability>k__BackingField: 5
+  - <Card>k__BackingField: {fileID: 11400000, guid: fbf7e9071de9d944da6db643cbf360f8, type: 2}
+    <Probability>k__BackingField: 2
+  - <Card>k__BackingField: {fileID: 11400000, guid: a837fce66e422e04daefe63c191b6623, type: 2}
+    <Probability>k__BackingField: 1
+  <Price>k__BackingField: 3
