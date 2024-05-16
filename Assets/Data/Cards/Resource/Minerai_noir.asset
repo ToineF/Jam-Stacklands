@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Minerai_noir
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Minerai Noir
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 9859ce14e6033f84c85705c125acf52b, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField: []
-  <SellPrice>k__BackingField: 0
+  <SellPrice>k__BackingField: 1
   <Type>k__BackingField: 3
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0

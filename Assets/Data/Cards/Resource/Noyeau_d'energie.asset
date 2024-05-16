@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Noyeau_d'energie
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "Noyeau D'\xE9nergie"
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: c64fc8d8ee4f4284699ac9f24361bf69, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField: []
-  <SellPrice>k__BackingField: 0
+  <SellPrice>k__BackingField: 5
   <Type>k__BackingField: 3
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0

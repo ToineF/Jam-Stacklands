@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Voleur
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Voleur
-  <Sprite>k__BackingField: {fileID: 0}
-  <OfferingAmount>k__BackingField: 0
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 71e6735b7024a1d45b0c2640f378e91c, type: 3}
+  <CardsThatCanBeStackedOn>k__BackingField: []
+  <SellPrice>k__BackingField: 0
+  <Type>k__BackingField: 0
   <Life>k__BackingField: 4
   <DamageGiven>k__BackingField: 5
   <ResourcesStolen>k__BackingField: 2

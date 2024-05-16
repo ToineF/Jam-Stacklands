@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Seigneur_demon
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "Seigneur D\xE9mon"
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: a321b4267bb651a48b0b9e7ce53579fb, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField: []
-  <SellPrice>k__BackingField: 0
+  <SellPrice>k__BackingField: 5
   <Type>k__BackingField: 1
   <Life>k__BackingField: 15
   <DamageGiven>k__BackingField: 8

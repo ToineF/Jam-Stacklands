@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: Ecuyer
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\xC9cuyer"
-  <Sprite>k__BackingField: {fileID: 0}
-  <OfferingAmount>k__BackingField: 0
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 4d7419e55893fca469be63e894be06b8, type: 3}
+  <CardsThatCanBeStackedOn>k__BackingField: []
+  <SellPrice>k__BackingField: 0
+  <Type>k__BackingField: 0
   <Life>k__BackingField: 2
   <DamageGiven>k__BackingField: 1
   <ResourcesStolen>k__BackingField: 1

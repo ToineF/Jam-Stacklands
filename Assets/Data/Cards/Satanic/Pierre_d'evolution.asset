@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82858882476b3b149bd3ccbb92419e03, type: 3}
   m_Name: Pierre_d'evolution
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: "Pierre d'\xE9volution"
+  <Sprite>k__BackingField: {fileID: 21300000, guid: acb447e122c258f428f6564ad67f9f4f, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField: []
-  <SellPrice>k__BackingField: 0
+  <SellPrice>k__BackingField: 3
   <Type>k__BackingField: 2

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cristal_noir
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Cristal Noir
-  <Sprite>k__BackingField: {fileID: 0}
+  <Sprite>k__BackingField: {fileID: 21300000, guid: 07a8b4edddfa10143bc1a1fdfacf4b89, type: 3}
   <CardsThatCanBeStackedOn>k__BackingField: []
-  <SellPrice>k__BackingField: 0
+  <SellPrice>k__BackingField: 4
   <Type>k__BackingField: 3
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0
