@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8345ac0279eaded41ae43dee5b5e234b, type: 3}
   m_Name: RecipePortail
   m_EditorClassIdentifier: 
-  <StrictOrderOfCords>k__BackingField: 1
+  <StrictOrderOfCords>k__BackingField: 0
   <CardsNeeded>k__BackingField:
   - {fileID: 11400000, guid: 77020b89ae2f4624aa308a517b76687f, type: 2}
   - {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
