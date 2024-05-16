@@ -26,7 +26,6 @@ public class BoosterShop : Shop, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("frefndjklfds");
         GameObject droppedObject = eventData.pointerDrag;
         DraggableCard newDraggable = droppedObject.GetComponent<DraggableCard>();
 

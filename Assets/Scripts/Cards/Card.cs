@@ -107,12 +107,12 @@ public class Card : MonoBehaviour
                     }
                 }
             }
-            Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
+            //Debug.Log(checkCardsCount + " " + recipe.CardsNeeded.Count);
 
             if (checkCardsCount >= recipe.CardsNeeded.Count)
             {
                 // Recipe completed
-                Debug.Log("recipe completed");
+                //Debug.Log("recipe completed");
                 topCard.Card.StartRecipe(recipe, cardsToCheck, indexes);
                 break;
             }
