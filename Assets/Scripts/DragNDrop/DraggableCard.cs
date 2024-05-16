@@ -33,6 +33,8 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         ParentDraggable = null;
         ParentTransform = transform.parent;
         _mouseOffset = transform.position - Input.mousePosition;
+        GetYoungestChild().Card.StopRecipe();
+
 
         BeginDragAllChildren();
     }

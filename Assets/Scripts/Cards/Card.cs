@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,6 +12,12 @@ public class Card : MonoBehaviour
     [Header("References")]
     [SerializeField] private TMP_Text _nameText;
     [SerializeField] private Image _image;
+    [SerializeField] private CanvasGroup _recipeGroup;
+    [SerializeField] private Image _recipeFillImage;
+
+    private float _currentRecipeTime;
+    private float _currentRecipeCraftSpeed;
+    private Coroutine _cookRoutine;
 
     private void Awake()
     {
@@ -75,7 +82,7 @@ public class Card : MonoBehaviour
             {
                 // Recipe completed
                 Debug.Log("recipe completed");
-                StartRecipe(recipe, cardsToCheck, indexes);
+                topCard.Card.StartRecipe(recipe, cardsToCheck, indexes);
                 break;
             }
         }
@@ -84,6 +91,36 @@ public class Card : MonoBehaviour
 
     private void StartRecipe(Recipe recipe, List<DraggableCard> allCards, Dictionary<int, bool> usedCardsIndexes)
     {
+        _currentRecipeTime = 0;
+        _currentRecipeCraftSpeed = recipe.CraftSpeed;
+        _recipeGroup.alpha = 1;
+        _cookRoutine = StartCoroutine(CookRecipe(recipe, allCards, usedCardsIndexes));
+    }
+
+    public void StopRecipe()
+    {
+        Debug.Log("Stop Recipe");
+        _recipeGroup.alpha = 0;
+        if (_cookRoutine != null) StopCoroutine(_cookRoutine);
+    }
+
+    private IEnumerator CookRecipe(Recipe recipe, List<DraggableCard> allCards, Dictionary<int, bool> usedCardsIndexes)
+    {
+        yield return new WaitForSeconds(recipe.CraftSpeed);
+
+        EndRecipe(recipe, allCards, usedCardsIndexes);
+    }
+
+    private void Update()
+    {
+        _currentRecipeTime += Time.deltaTime;
+        _recipeFillImage.fillAmount = _currentRecipeTime / _currentRecipeCraftSpeed;
+    }
+
+    private void EndRecipe(Recipe recipe, List<DraggableCard> allCards, Dictionary<int, bool> usedCardsIndexes)
+    {
+        _recipeGroup.alpha = 0;
+
         // Delete cards if needed
         int lastKey = 0;
         foreach (var index in usedCardsIndexes)
@@ -103,7 +140,6 @@ public class Card : MonoBehaviour
         newCard.UpdateData();
         Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
         newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
-
     }
 
     public void AddToCheckStack(DraggableCard current, ref List<DraggableCard> list)

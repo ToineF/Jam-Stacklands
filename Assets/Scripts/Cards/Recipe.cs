@@ -8,6 +8,7 @@ public class Recipe : ScriptableObject
     [field: SerializeField] public bool StrictOrderOfCords { get; private set; }
     [field: SerializeField] public List<CardIngredient> CardsNeeded { get; private set; }
     [field: SerializeField] public CardData CardToSpawn { get; private set; }
+    [field: SerializeField] public float CraftSpeed { get; private set; }
 }
 
 [Serializable]
