@@ -17,6 +17,7 @@ MonoBehaviour:
   <CardsThatCanBeStackedOn>k__BackingField: []
   <SellPrice>k__BackingField: 0
   <Type>k__BackingField: 0
+  <DisappearAfterNight>k__BackingField: 1
   <Life>k__BackingField: 2
   <DamageGiven>k__BackingField: 2
   <ResourcesStolen>k__BackingField: 1

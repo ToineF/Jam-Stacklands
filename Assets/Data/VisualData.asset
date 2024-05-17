@@ -22,8 +22,8 @@ MonoBehaviour:
   <CardDroppedScaleTime>k__BackingField: 0.1
   <CardFocusShakeForce>k__BackingField: 4
   <CardFocusShakeTime>k__BackingField: 0.2
-  <CardSpawnDistance>k__BackingField: 200
+  <CardSpawnDistance>k__BackingField: 145
   <CardSpawnTime>k__BackingField: 0.2
   <BoosterEjectionTime>k__BackingField: 0.4
-  <BoosterEjectionSpeed>k__BackingField: 270
+  <BoosterEjectionSpeed>k__BackingField: 450
   <OverShopParentOffset>k__BackingField: {x: 0, y: -10}

@@ -32,17 +32,22 @@ public class HumanHandler : MonoBehaviour
     public void HumanAttack(DraggableCard card)
     {
         DraggableCard targetCard = GetBestCardToAttack(out bool isDemon);
-        if (isDemon)
+        if (card.Card.Data.DisappearAfterNight)
         {
-            Debug.Log("attack demon");
-            targetCard.BattleWithCard(card);
-        }
-        else
-        {
-            Debug.Log("attack resource");
-            targetCard.DestroyCard();
+
+            if (isDemon)
+            {
+                Debug.Log("attack demon");
+                targetCard.BattleWithCard(card);
+            }
+            else
+            {
+                Debug.Log("attack resource");
+                targetCard.DestroyCard();
+            }
             card.DestroyCard();
         }
+
     }
 
 

@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     public List<DraggableCard> CurrentCards { get; } = new List<DraggableCard>();
     public bool HasHumans
     {
-        get => CurrentCards.Any(card => card.Card.Data.Type == CardData.CardType.Human);
+        get => CurrentCards.Any(card => card.Card.Data.Type == CardData.CardType.Human && card.Card.Data.DisappearAfterNight);
     }
     public bool HasDemons
     {

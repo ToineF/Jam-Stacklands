@@ -11,6 +11,8 @@ public abstract class CardData : ScriptableObject
     [field: SerializeField] public List<CardData> CardsThatCanBeStackedOn { get; private set; }
     [field: SerializeField] public int SellPrice { get; private set; }
     [field: SerializeField] public CardType Type { get; private set; }
+    [field: SerializeField] public bool DisappearAfterNight { get; private set; } = false;
+
 
     public enum CardType
     {
