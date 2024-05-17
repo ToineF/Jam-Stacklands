@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58068115d978754980c583284ef6a95, type: 3}
+  m_Name: Human_Night_11
+  m_EditorClassIdentifier: 
+  <NumberToSpawn>k__BackingField: 3
+  <SpawnableCards>k__BackingField:
+  - <Card>k__BackingField: {fileID: 11400000, guid: 05b32d11f2f650147adfd5148761542f, type: 2}
+    <Probability>k__BackingField: 2
+  - <Card>k__BackingField: {fileID: 11400000, guid: 53d1ecc8e92d104408b782b9f9b3bf26, type: 2}
+    <Probability>k__BackingField: 5
+  - <Card>k__BackingField: {fileID: 11400000, guid: d192778229535204e89d6a8f41b34ff2, type: 2}
+    <Probability>k__BackingField: 3

@@ -5,7 +5,7 @@ public class HumansSpawningPhase : MonoBehaviour
     private void Update()
     {
         // todo: spawn humans
-        GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.DEMONS_LEAVE;
+        GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.NEW_MOON; // DEMON_LEAVE
     }
 
     public void OnStateChanged(MoonPhaseProgress.State state, int night)

@@ -63,7 +63,7 @@ public class Card : MonoBehaviour
         }
         _sellValueText.text = Data.SellPrice.ToString();
         _cardTypeImage.sprite = GameManager.Instance?.TypeImageData.GetValue(Data.Type);
-        _murderCompletedImage.gameObject.SetActive(HasCommitedMurder);
+        _murderCompletedImage.gameObject.SetActive(Data.Type == CardData.CardType.Demonic && HasCommitedMurder);
     }
 
     public void CheckStack(DraggableCard topCard)
@@ -154,6 +154,24 @@ public class Card : MonoBehaviour
     private void Update()
     {
         UpdateCraftCount();
+        CheckForHumanAttack();
+    }
+
+    private void CheckForHumanAttack()
+    {
+        if (Data.Type != CardData.CardType.Human) return;
+
+        if (GameUI.Instance.MoonPhaseProgress.GameState == MoonPhaseProgress.State.COMBAT_START)
+        {
+            Debug.Log("Attack");
+
+        }
+        else if(GameUI.Instance.MoonPhaseProgress.GameState == MoonPhaseProgress.State.COMBAT_END) 
+        {
+            Debug.Log("Spawn");
+
+        }
+
     }
 
     private void UpdateCraftCount()

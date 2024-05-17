@@ -88,14 +88,14 @@ public class MoonPhaseProgress : MonoBehaviour
         {
             GameState = State.WAIT_CRAFTS;
         }
-        else if (GameManager.Instance.HasEnemies)
+        else// if (GameManager.Instance.HasEnemies)
         {
             GameState = State.COMBAT_START;
         }
-        else
-        {
-            GameState = State.NEW_MOON;
-        }
+        //else
+        //{
+        //    GameState = State.NEW_MOON;
+        //}
     }
     
     private void _OnStateChanged(State state, int night)
