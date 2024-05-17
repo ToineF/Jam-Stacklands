@@ -2305,7 +2305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1762986277875223391, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: timePerPhase
-      value: 15
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3323238282589285013, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: m_Name

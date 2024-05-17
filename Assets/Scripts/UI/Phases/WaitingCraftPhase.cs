@@ -4,7 +4,7 @@ public class WaitingCraftPhase : MonoBehaviour
 {
     private void Update()
     {
-        if (GameManager.Instance.CurrentMaxCookTime >= 0)
+        if (GameManager.Instance.CurrentMaxCookTime > 0.001f)
         {
             return;
         }

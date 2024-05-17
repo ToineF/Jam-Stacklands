@@ -21,8 +21,18 @@ public class DemonsLeavingPhase : MonoBehaviour
             }
         }
 
-        if (!GameManager.Instance.HasDemons) SceneManager.LoadScene(0);
-        
+        if (!GameManager.Instance.HasDemons) SceneManager.LoadScene(0); // Lose
+
+        for (int i = 0; i < GameManager.Instance.CurrentCards.Count; i++)
+        {
+            DraggableCard card = GameManager.Instance.CurrentCards[i];
+            if (card.Card.Data.Type == CardData.CardType.Demonic)
+            {
+                card.Card.HasCommitedMurder = false;
+                card.Card.UpdateData();
+            }
+        }
+
         GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.NEW_MOON;
     }
 
