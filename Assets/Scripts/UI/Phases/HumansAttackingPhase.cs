@@ -4,7 +4,7 @@ public class HumansAttackingPhase : MonoBehaviour
 {
     private void Update()
     {
-        if (GameManager.Instance.HasEnemies)
+        if (GameManager.Instance.HasHumans)
         {
             return;
         }

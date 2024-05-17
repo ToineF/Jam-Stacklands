@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DemonsLeavingPhase : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class DemonsLeavingPhase : MonoBehaviour
                 Destroy(card.gameObject);
             }
         }
+
+        if (!GameManager.Instance.HasDemons) SceneManager.LoadScene(0);
         
         GameUI.Instance.MoonPhaseProgress.GameState = MoonPhaseProgress.State.NEW_MOON;
     }

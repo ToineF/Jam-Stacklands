@@ -1472,7 +1472,7 @@ PrefabInstance:
     - target: {fileID: 1331083045398244113, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: <Data>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: 3c0274f2ff987d2428807638269b6f39, type: 2}
+      objectReference: {fileID: 11400000, guid: b63ed7f3131f643479e8355e9b48f573, type: 2}
     - target: {fileID: 4151737354007600088, guid: a8ebe018a0e06704e89a2840cd53898d, type: 3}
       propertyPath: m_Name
       value: Card (3)
@@ -2305,7 +2305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1762986277875223391, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: timePerPhase
-      value: 2
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3323238282589285013, guid: 4be048b427d932747b512c32afbf60ef, type: 3}
       propertyPath: m_Name
