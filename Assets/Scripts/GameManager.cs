@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public Recipe[] Recipes { get; private set; }
     [field: SerializeField] public DraggableCard CardPrefab { get; private set; }
     [field: SerializeField] public CardsTypeImageData TypeImageData { get; private set; }
+    [field: SerializeField] public HumanHandler HumanHandler { get; private set; }
     public float CurrentMaxCookTime { get; set; }
     public GameObject CurrentMaxCookCard { get; set; }
 
@@ -44,11 +45,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public List<Card> CurrentCards { get; } = new List<Card>();
+    public List<DraggableCard> CurrentCards { get; } = new List<DraggableCard>();
     public bool HasEnemies
     {
-        get => CurrentCards.Any(card => card.Data.Type == CardData.CardType.Human);
+        get => CurrentCards.Any(card => card.Card.Data.Type == CardData.CardType.Human);
     }
+
 
     public Action<bool> OnPauseStateChanged;
     public Action<bool> OnFastForward;
@@ -56,5 +58,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        var cards = FindObjectsOfType<DraggableCard>();
+        foreach (var card in cards)
+        {
+            CurrentCards.Add(card);
+        }
     }
 }

@@ -206,6 +206,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     private void Update()
     {
         if (ChildDraggable != null) ChildDraggable.transform.transform.position = Vector3.Lerp(ChildDraggable.transform.transform.position, transform.transform.position + (IsOverShop ? GameManager.Instance?.VisualData.OverShopParentOffset : GameManager.Instance?.VisualData.ParentOffset) ?? Vector2.down * 20, GameManager.Instance?.VisualData.CardFollowLerp ?? 0.3f);
+        CheckForHumanAttack();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -218,7 +219,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         if (parent) ParentDraggable?.ResetCurrentDraggable(true, false);
         if (child) ChildDraggable?.ResetCurrentDraggable(false, true);
-        GameManager.Instance.CurrentCards.Remove(Card);
+        GameManager.Instance.CurrentCards.Remove(this);
         Destroy(gameObject);
     }
 
@@ -276,7 +277,7 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         DestroyCard();
     }
 
-    private void BattleWithCard(DraggableCard other)
+    public void BattleWithCard(DraggableCard other)
     {
         // Battle Start
         var otherData = other.Card.Data as CardCharacterData;
@@ -313,5 +314,15 @@ public class DraggableCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             Card.UpdateData();
             other.DestroyCard();
         }
+    }
+
+    private void CheckForHumanAttack()
+    {
+        if (Card.Data.Type != CardData.CardType.Human) return;
+
+        if (GameUI.Instance.MoonPhaseProgress.GameState != MoonPhaseProgress.State.COMBAT_START) return;
+
+        Debug.Log("Attack");
+        GameManager.Instance.HumanHandler.HumanAttack(this);
     }
 }

@@ -48,9 +48,9 @@ public abstract class CardData : ScriptableObject
     {
         for (int i = 0; i < cardData.NumberToSpawn; i++)
         {
-            Card newCard = Instantiate(GameManager.Instance.CardPrefab.Card, transform.position, Quaternion.identity, transform.parent);
-            newCard.Data = CardData.GetRandomCard(cardData.SpawnableCards);
-            newCard.UpdateData();
+            DraggableCard newCard = Instantiate(GameManager.Instance.CardPrefab, transform.position, Quaternion.identity, transform.parent);
+            newCard.Card.Data = CardData.GetRandomCard(cardData.SpawnableCards);
+            newCard.Card.UpdateData();
             Vector3 randomTargetDirection = newCard.transform.position + (Vector3)Random.insideUnitCircle.normalized * GameManager.Instance.VisualData.CardSpawnDistance;
             newCard.transform.DOMove(randomTargetDirection, GameManager.Instance.VisualData.CardSpawnTime);
 

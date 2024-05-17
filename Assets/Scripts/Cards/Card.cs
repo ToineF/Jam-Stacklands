@@ -154,24 +154,6 @@ public class Card : MonoBehaviour
     private void Update()
     {
         UpdateCraftCount();
-        CheckForHumanAttack();
-    }
-
-    private void CheckForHumanAttack()
-    {
-        if (Data.Type != CardData.CardType.Human) return;
-
-        if (GameUI.Instance.MoonPhaseProgress.GameState == MoonPhaseProgress.State.COMBAT_START)
-        {
-            Debug.Log("Attack");
-
-        }
-        else if(GameUI.Instance.MoonPhaseProgress.GameState == MoonPhaseProgress.State.COMBAT_END) 
-        {
-            Debug.Log("Spawn");
-
-        }
-
     }
 
     private void UpdateCraftCount()
