@@ -26,7 +26,7 @@ MonoBehaviour:
     <Probability>k__BackingField: 2
   - <Card>k__BackingField: {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
     <Probability>k__BackingField: 1
-  - <Card>k__BackingField: {fileID: 11400000, guid: 3c0274f2ff987d2428807638269b6f39, type: 2}
+  - <Card>k__BackingField: {fileID: 11400000, guid: b63ed7f3131f643479e8355e9b48f573, type: 2}
     <Probability>k__BackingField: 4
   - <Card>k__BackingField: {fileID: 11400000, guid: fbf7e9071de9d944da6db643cbf360f8, type: 2}
     <Probability>k__BackingField: 2

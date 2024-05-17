@@ -255,6 +255,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: --MAIN GAME--
       objectReference: {fileID: 0}
+    - target: {fileID: 5853384472092365060, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
+      propertyPath: <Data>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: b63ed7f3131f643479e8355e9b48f573, type: 2}
     - target: {fileID: 7342303808842274154, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -278,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 7342303808842274154, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486689347401606959, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
+      propertyPath: timePerPhase
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7520657025152158783, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: m_RootOrder
