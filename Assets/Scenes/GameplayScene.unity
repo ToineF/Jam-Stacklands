@@ -285,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7486689347401606959, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: timePerPhase
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7520657025152158783, guid: 3e5aab3e5b1eedd4784cba3e799f6fdb, type: 3}
       propertyPath: m_RootOrder
