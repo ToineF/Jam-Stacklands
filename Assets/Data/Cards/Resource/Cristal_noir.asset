@@ -20,7 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5affed3b1fa2cba469bfa261fa881717, type: 2}
   - {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
   - {fileID: 11400000}
-  <SellPrice>k__BackingField: 4
+  <SellPrice>k__BackingField: 2
   <Type>k__BackingField: 3
+  <DisappearAfterNight>k__BackingField: 0
   <Life>k__BackingField: 0
   <DamageGiven>k__BackingField: 0
