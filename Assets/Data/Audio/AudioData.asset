@@ -17,5 +17,5 @@ MonoBehaviour:
   <CardsCraft>k__BackingField: {fileID: 8300000, guid: ba664d4ab231fa448b190c5e53f4de5c, type: 3}
   <CardSpawn>k__BackingField: {fileID: 8300000, guid: 639b0f3826d83064d9f2c8831be24a9a, type: 3}
   <CardSell>k__BackingField: {fileID: 8300000, guid: 11f8320a0442c5843a68271bee2e8301, type: 3}
-  <BoosterBuy>k__BackingField: {fileID: 8300000, guid: 33a2df9d659b7e94cbd6b5f6992744e0, type: 3}
+  <BoosterBuy>k__BackingField: {fileID: 8300000, guid: e2c32b178cc4d14488cd5957349d5b1b, type: 3}
   <UIClick>k__BackingField: {fileID: 8300000, guid: 86828022006e7b54cac877fa1fc3ee01, type: 3}
