@@ -19,3 +19,4 @@ MonoBehaviour:
   - <Data>k__BackingField: {fileID: 11400000, guid: ace79a6a9aaa70a4e8d53be930b8382b, type: 2}
     <IsDestroyedAfterCraft>k__BackingField: 0
   <CardToSpawn>k__BackingField: {fileID: 11400000, guid: 7c6dcdf6d2fd20c42ad41551d819e52b, type: 2}
+  <CraftSpeed>k__BackingField: 4
